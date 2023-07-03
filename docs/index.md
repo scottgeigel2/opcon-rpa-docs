@@ -135,7 +135,7 @@ You can also double click on or open the VisualCron Tray Client to start the Vis
 
 ### Server Configuration
 
-![Server Settings](../static/img/ServerSettings.png)  
+![Server Settings](../static/img/ServerSettings.JPG)  
 
 #### General Server Settings
 
