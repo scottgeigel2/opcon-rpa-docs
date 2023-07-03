@@ -146,7 +146,7 @@ Click on the health status indicator to view the server's historical performance
 
 #### Step 1 - Set up Environment Credentials and Connections    
 Create and manage system and user requirements for authentication between required services and the server environment.  
-![Credentials](../static/img/credential.jpg)  
+![Credentials](../static/img/Credential.jpg)  
 - From server settings menu, navigate and select the _**Credentials**_ view.  
  
 ![Connections](../static/img/Connection.jpg)  
@@ -159,7 +159,7 @@ Create a new job for grouping one or more related RPA tasks for acheiving a desi
  - Right click on the Job Group View, navigate and select _**Add Job**_ from the menu. 
 
 :::tip Confirm ROI Values when Creating a new Job
-![Job ROI Settings](../static/img/jobROIvalues.jpg)   
+![Job ROI Settings](../static/img/JobROIValues.jpg)   
 ROI value is captured at the job level.  Ensure your default ROI settings are updated and configured during job creation to start capturing history.  
 
 The unit value is based on the currency configured in Server > ROI settings.  (**[Where to update default ROI values](#Measure-and-Track-ROI-for-RPA-Tasks)**)   
@@ -169,7 +169,7 @@ The unit value is based on the currency configured in Server > ROI settings.  (*
 
 ##### Create an RPA Task for a Web Based Process   
 Add and record one or more web rpa tasks.  This task type should be used for recording manual tasks with a web browser and supports background replay of multiple tasks in paralell.
-![Web RPA Task Type](../static/img/webmacro.jpg)  
+![Web RPA Task Type](../static/img/WebMacro.jpg)  
  - Right click on the RPA job, navigate and select _**Add Task > Net > Web Macro**_ 
 
 ##### Create an RPA Task for Windows Desktop and Hybrid *(Web & Desktop)* Processes
@@ -235,7 +235,7 @@ Add and record one or more desktop or hybrid tasks.  This task type should only 
 ### Orchestration with OpCon
 #### Managing Job Execution with OpCon
 
-![OpCon Studio](../static/img/Studio.jpg)  
+![OpCon Studio](../static/img/studio.jpg)  
 **Schedule by Frequency *(Time)* or Dependency _(Event)_**  
  - Orchestrate RPA workflow with OpCon by expanding schedules to include and start execute RPA jobs remotely.  
 
@@ -248,7 +248,7 @@ Add and record one or more desktop or hybrid tasks.  This task type should only 
 Supplement daily workflows with RPA jobs to reduce their overall manual burden or to extend the workflow for existing schedules.  
 :::
 
-![OpCon Self Service](../static/img/selfservice.jpg) 
+![OpCon Self Service](../static/img/SelfService.jpg) 
 **Use Self-Service Buttons _(On-Demand)_**
 RPA jobs can also be initiated on-demand by configuring a self-service button for users to either trigger the RPA job directly or indirectly by fulfilling a required job dependency. 
 
@@ -288,7 +288,7 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
   3. In Solution Manager, navigate to `https://localhost/studio` to create a new schedule or open an existing schedule in studio.
   4. Add a new windows master job with the job action of **'Embedded Script'** and assign the script runner and embedded script to the master job and set the values for the environment variables.
 
-   ![OpCon Embedded Script Job](../static/img/OpConRPAjobscript.png)
+   ![OpCon Embedded Script Job](../static/img/OpConRPAJobScript.png)
 
 ---
 ### OpCon RPA Web Services Script
@@ -399,7 +399,7 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
 
 ## Reporting & Metrics
 ### RPA Job History
-![Job History](../static/img/jobhistorydetails.jpg)
+![Job History](../static/img/JobHistoryDetails.jpg)
 :::tip
 - To access job or task log history: Right click on a job or task and select _**log history**_ from the menu.
 :::
@@ -407,9 +407,9 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
 ![ROI Settings](../static/img/configureROI.jpg)
 #### ROI Performance
 ##### Review ROI Savings by Time or Cost
-![ROI Report](../static/img/ROIhistory.jpg)
+![ROI Report](../static/img/ROIHistory.jpg)
 ##### Review ROI Savings by Job
-![Job ROI History](../static/img/jobROIhistory.jpg)
+![Job ROI History](../static/img/JobROIHistory.jpg)
 
 
 ## Troubleshooting & Support
@@ -419,7 +419,7 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
 For quick access to a summary of active jobs or recent job failures, navigate to the failed jobs or running jobs view on the server settings tab. 
 :::
 #### Audit History
-![Audit History](../static/img/audithistorydetails.jpg)
+![Audit History](../static/img/AuditHistoryDetails.jpg)
 ### RPA Job Logs  
 To access job or task log history: Right click on a job or task and select _**log history**_ from the menu.
 - Settings for debug log entries are found in the main menu Manage -> Manage server settings -> Log settings tab.
