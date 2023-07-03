@@ -117,7 +117,7 @@ The flow is: Trigger > Condition > Task > Notification.
 
 #### Workflow Orchestration w/ OpCon  
 
-![OpCon RPA Overview](../static/img/OpConRPASummary.JPG)  
+![OpCon RPA Overview](../static/img/OpConRPASummary.jpg)  
 
 ---
 
