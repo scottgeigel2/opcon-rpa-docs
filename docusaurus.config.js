@@ -3,7 +3,7 @@ module.exports = {
   title: 'SMA Technologies Help',
   tagline: 'OpCon RPA',
   url: 'https://help.smatechnologies.com',
-  baseUrl: '/opcon/connectors/opconrpa/',
+  baseUrl: '/opcon/connectors/opcon-rpa/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
