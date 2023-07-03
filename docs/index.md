@@ -1,6 +1,6 @@
 ---
 slug: '/'
-sidebar_label: 'Product Name'
+sidebar_label: 'OpCon RPA'
 ---
 
 # OpCon RPA
