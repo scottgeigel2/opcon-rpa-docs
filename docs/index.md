@@ -58,7 +58,11 @@ The VisualCron Server and Client will need to installed on the windows system th
 A unique license will be required for each installation of VisualCron server application, but several clients are able connect to one server with one license.
 :::
 #### Activation
+
+<!--
 ![Activate License](../static/img/ActivateLicense.jpg)  
+-->
+
 - Once you have an activation code you can activate VisualCron. To activate VisualCron you must login to the server that you want to activate. If you have trial time left you can go to main menu Client->Server tab->License->Activate, which opens the activation form. If you don't have any trial time left, the activation form will open automatically when logging in. Enter the activation code in the fields.
 
 :::caution Online Activation  
