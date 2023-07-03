@@ -120,7 +120,7 @@ You can also double click on or open the VisualCron Tray Client to start the Vis
 - As the VisualCron server runs as a service, the client application can be closed without affecting the core server activities.
 
 ### Server Configuration
-![Server Settings](../static/img/ServerSettings.png)  
+![Server Settings](../static/img/ServerSettings.jpg)  
 #### General Server Settings
 The VisualCron server runs as a Windows service in the background. The server service status is Started when the server computer is started.
 
