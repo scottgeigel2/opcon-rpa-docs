@@ -58,7 +58,7 @@ The VisualCron Server and Client will need to installed on the windows system th
 A unique license will be required for each installation of VisualCron server application, but several clients are able connect to one server with one license.
 :::
 #### Activation
-![Activate License](/img/activatelicense.jpg)  
+![Activate License](../static/img/ActivateLicense.jpg)  
 - Once you have an activation code you can activate VisualCron. To activate VisualCron you must login to the server that you want to activate. If you have trial time left you can go to main menu Client->Server tab->License->Activate, which opens the activation form. If you don't have any trial time left, the activation form will open automatically when logging in. Enter the activation code in the fields.
 
 :::caution Online Activation  
@@ -77,7 +77,7 @@ For online activation, ensure you are:
 ### Overview of RPA w/ OpCon
 #### RPA Configuration in VisualCron  
 This is a representation of the structure of all VisualCron objects to consider when planning a workflow.    
- ![RPA Job Flow](/img/rpajobflow.png)  
+ ![RPA Job Flow](../static/img/rpajobflow.png)  
 :::note
 The flow is: Trigger > Condition > Task > Notification.
 1. One trigger (type time or event) fires a Job to run.
@@ -100,7 +100,7 @@ The flow is: Trigger > Condition > Task > Notification.
 
 #### Workflow Orchestration w/ OpCon  
 
-![OpCon RPA Overview](/img/opconrpasummary.jpg)  
+![OpCon RPA Overview](../static/img/opconrpasummary.jpg)  
 
 ---
 
@@ -110,13 +110,13 @@ The VisualCron Client is a separate application that constitutes the main type o
 
 The client application is started from the Windows desktop icon (VisualCron X) or the Start menu Program > VisualCron X > VisualCron Client. 
 
-![Tray Client](/img/trayclient.png)  
+![Tray Client](../static/img/trayclient.png)  
 You can also double click on or open the VisualCron Tray Client to start the VisualCron Client.
 - As the VisualCron server handles the defined Jobs, the VisualCron client can only connect to the VisualCron server when the server is running.
 - As the VisualCron server runs as a service, the client application can be closed without affecting the core server activities.
 
 ### Server Configuration
-![Server Settings](/img/ServerSettings.png)  
+![Server Settings](../static/img/ServerSettings.png)  
 #### General Server Settings
 The VisualCron server runs as a Windows service in the background. The server service status is Started when the server computer is started.
 
@@ -129,9 +129,9 @@ The default port number between the VisualCron Server and the Client is **16444*
 :::
 
 #### Enable the Web REST API
-![Enable Web API](/img/WebAPISettings.jpg)  
+![Enable Web API](../static/img/WebAPISettings.jpg)  
 :::tip Server Health
-![Server Health](/img/serverhealth.jpg)  
+![Server Health](../static/img/serverhealth.jpg)  
 Click on the health status indicator to view the server's historical performance.
 :::
 
@@ -142,20 +142,20 @@ Click on the health status indicator to view the server's historical performance
 
 #### Step 1 - Set up Environment Credentials and Connections    
 Create and manage system and user requirements for authentication between required services and the server environment.  
-![Credentials](/img/credential.jpg)  
+![Credentials](../static/img/credential.jpg)  
 - From server settings menu, navigate and select the _**Credentials**_ view.  
  
-![Connections](/img/Connection.jpg)  
+![Connections](../static/img/Connection.jpg)  
 - From server settings menu, navigate and select the _**Connections**_ view.  
 - These can be reused as required when creating new jobs and tasks.
 
 #### Step 2 - Create a New Job
 Create a new job for grouping one or more related RPA tasks for acheiving a desired workflow.
-![RPA Job](/img/RPAJob.jpg)
+![RPA Job](../static/img/RPAJob.jpg)
  - Right click on the Job Group View, navigate and select _**Add Job**_ from the menu. 
 
 :::tip Confirm ROI Values when Creating a new Job
-![Job ROI Settings](/img/jobROIvalues.jpg)   
+![Job ROI Settings](../static/img/jobROIvalues.jpg)   
 ROI value is captured at the job level.  Ensure your default ROI settings are updated and configured during job creation to start capturing history.  
 
 The unit value is based on the currency configured in Server > ROI settings.  (**[Where to update default ROI values](#Measure-and-Track-ROI-for-RPA-Tasks)**)   
@@ -165,12 +165,12 @@ The unit value is based on the currency configured in Server > ROI settings.  (*
 
 ##### Create an RPA Task for a Web Based Process   
 Add and record one or more web rpa tasks.  This task type should be used for recording manual tasks with a web browser and supports background replay of multiple tasks in paralell.
-![Web RPA Task Type](/img/webmacro.jpg)  
+![Web RPA Task Type](../static/img/webmacro.jpg)  
  - Right click on the RPA job, navigate and select _**Add Task > Net > Web Macro**_ 
 
 ##### Create an RPA Task for Windows Desktop and Hybrid *(Web & Desktop)* Processes
 Add and record one or more desktop or hybrid tasks.  This task type should only be used for recording simple desktop tasks and requires full control of the host system.
- ![Desktop and Hybrid RPA Task Type](/img/robot.jpg)  
+ ![Desktop and Hybrid RPA Task Type](../static/img/robot.jpg)  
  - Right click on the RPA job, navigate and select _**Add Task > Interactivity > Robot**_  
 
 :::caution
@@ -184,11 +184,11 @@ Add and record one or more desktop or hybrid tasks.  This task type should only 
 #### Step 3 (Optional) - Use Conditions or Triggers for Jobs and Tasks 
 
 ##### Configure a Job or Task Condition
-![Workflow Conditions](/img/Conditions.jpg)  
+![Workflow Conditions](../static/img/Conditions.jpg)  
  - Right click to edit an RPA **job or task**, navigate to the _**Condition Tab**_ to configure a conditional status requirement for starting the RPA **job or task**.
 
 ##### Configure a Job Trigger
-![Job Triggers](/img/Trigger.jpg)  
+![Job Triggers](../static/img/Trigger.jpg)  
  
  - Select the Triggers tab from the **Edit Job* view to add a time or event trigger.
  - *Shortcut:* Right click on an RPA *job*, navigate to the _**Triggers**_ from the menu to configure a custom requirement for starting the RPA **job**.  
@@ -231,7 +231,7 @@ Add and record one or more desktop or hybrid tasks.  This task type should only 
 ### Orchestration with OpCon
 #### Managing Job Execution with OpCon
 
-![OpCon Studio](/img/Studio.jpg)  
+![OpCon Studio](../static/img/Studio.jpg)  
 **Schedule by Frequency *(Time)* or Dependency _(Event)_**  
  - Orchestrate RPA workflow with OpCon by expanding schedules to include and start execute RPA jobs remotely.  
 
@@ -244,7 +244,7 @@ Add and record one or more desktop or hybrid tasks.  This task type should only 
 Supplement daily workflows with RPA jobs to reduce their overall manual burden or to extend the workflow for existing schedules.  
 :::
 
-![OpCon Self Service](/img/selfservice.jpg) 
+![OpCon Self Service](../static/img/selfservice.jpg) 
 **Use Self-Service Buttons _(On-Demand)_**
 RPA jobs can also be initiated on-demand by configuring a self-service button for users to either trigger the RPA job directly or indirectly by fulfilling a required job dependency. 
 
@@ -262,14 +262,14 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
  - In Solution Manager, navigate to `https://localhost/library/scripts` to create a new script runner and script type.  
 
   :::note  New Script Type
-  ![OpCon Script Runner](/img/ScriptType.jpg)
+  ![OpCon Script Runner](../static/img/ScriptType.jpg)
   `https://localhost/library/scripts/types`
     - **Name:** *Webservices*   
     - **File Extension:** *.web*   
   :::
 
   :::note  New Script Runner
-  ![OpCon Script Runner](/img/ScriptRunner.jpg)
+  ![OpCon Script Runner](../static/img/ScriptRunner.jpg)
   `https://localhost/library/scripts/runners`
     - **Name:** *WebServicesRunner*
     - **OS:** *Windows*  
@@ -277,14 +277,14 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
     - **Command Template Parameters:** *C:\[Path to Webservices Connector]\SMAWSConnector.exe $FILE $ARGUMENTS*  
   :::
 
-  ![OpCon Upload Script](/img/uploadscript.jpg)  
+  ![OpCon Upload Script](../static/img/uploadscript.jpg)  
 
   2. Modify and upload the script to the OpCon script repository.  `https://localhost/library/scripts`    
 	 - The script itself is parameterized for user codes, password, url, jobname, variables with the arguments set as variables.  
   3. In Solution Manager, navigate to `https://localhost/studio` to create a new schedule or open an existing schedule in studio.
   4. Add a new windows master job with the job action of **'Embedded Script'** and assign the script runner and embedded script to the master job and set the values for the environment variables.
 
-   ![OpCon Embedded Script Job](/img/OpConRPAjobscript.png)
+   ![OpCon Embedded Script Job](../static/img/OpConRPAjobscript.png)
 
 ---
 ### OpCon RPA Web Services Script
@@ -395,27 +395,27 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
 
 ## Reporting & Metrics
 ### RPA Job History
-![Job History](/img/jobhistorydetails.jpg)
+![Job History](../static/img/jobhistorydetails.jpg)
 :::tip
 - To access job or task log history: Right click on a job or task and select _**log history**_ from the menu.
 :::
 ### Measure and Track ROI for RPA Tasks
-![ROI Settings](/img/configureROI.jpg)
+![ROI Settings](../static/img/configureROI.jpg)
 #### ROI Performance
 ##### Review ROI Savings by Time or Cost
-![ROI Report](/img/ROIhistory.jpg)
+![ROI Report](../static/img/ROIhistory.jpg)
 ##### Review ROI Savings by Job
-![Job ROI History](/img/jobROIhistory.jpg)
+![Job ROI History](../static/img/jobROIhistory.jpg)
 
 
 ## Troubleshooting & Support
 ### RPA Job and Task Status & Results
 :::tip Operational Status
-![Operational Status](/img/operationalstatus.jpg)  
+![Operational Status](../static/img/operationalstatus.jpg)  
 For quick access to a summary of active jobs or recent job failures, navigate to the failed jobs or running jobs view on the server settings tab. 
 :::
 #### Audit History
-![Audit History](/img/audithistorydetails.jpg)
+![Audit History](../static/img/audithistorydetails.jpg)
 ### RPA Job Logs  
 To access job or task log history: Right click on a job or task and select _**log history**_ from the menu.
 - Settings for debug log entries are found in the main menu Manage -> Manage server settings -> Log settings tab.
