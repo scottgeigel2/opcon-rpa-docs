@@ -19,24 +19,33 @@ OpCon RPA is an OpCon extension with exponential implications.
 ---
 
 ## Installation, License Configuration & Registration
+
 ### System Requirements
+
 #### Operating systems
+
 - VisualCron is designed for Windows based computers
 - VisualCron works on the following operating systems: Windows Server 2008 R2/2012/2016/2019/2022 and Windows 8/10/11
 - VisualCron works on both 32-bit and 64-bit processors
 - VisualCron requires .NET 4.8
+
 #### Computer requirements (Server only)
+
 - Operating system - recommended Windows operating system is Windows Server 2008 R2/2012/2016/2019/2019/2022
 - Disk space - please reserve 1GB to 4GB depending on how much logging you need to store
 - CPU - 2GHz or more, quad core or more
 - Memory - 4GB or more
+
 #### Computer requirements (Client only)
+
 - Operating system - recommended Windows operating system is Windows 8/10/11
 - Disk space - please reserve 1GB
 - CPU - 2GHz or more, quad core or more
 - Memory - 4GB or more
 - Minimum screen resolution 1920*1080
+
 #### Computer requirements (Client and Server)
+
 - Operating system - recommended Windows operating system is Windows Server 2008 R2/2012/2016/2019/2022
 - Disk space - please reserve 1GB to 4GB depending on how much logging you need to store
 - CPU - 2GHz or more, quad core or more
@@ -44,24 +53,26 @@ OpCon RPA is an OpCon extension with exponential implications.
 - Minimum screen resolution 1920*1080   
 
 ### Acquiring a License
+
 To get started with OpCon RPA, please contact your OpCon customer service representative.  Your representative will assist you through the process of completing the requirements to get start with RPA.
 
 More information in regards to pricing and packaging for OpCon RPA **[is available here.](https://smatechnologies.com/opcon-pricing)**
 
 ### Install VisualCron for RPA
+
 The VisualCron Server and Client will need to installed on the windows system that will be responsible for hosting the server and/or client and executing RPA workflow.  
  - A download link for VisualCron **[is available here.](https://www.visualcron.com/download.aspx)**  
  - VisualCron's installation instructions **[are available here.](https://www.visualcron.com/doc/HTML/download_install_upgrade_and_u.htm)**  
 
 ### Activate the License Key and Register the Environment
+
 :::caution
 A unique license will be required for each installation of VisualCron server application, but several clients are able connect to one server with one license.
 :::
+
 #### Activation
 
-<!--
 ![Activate License](../static/img/ActivateLicense.jpg)  
--->
 
 - Once you have an activation code you can activate VisualCron. To activate VisualCron you must login to the server that you want to activate. If you have trial time left you can go to main menu Client->Server tab->License->Activate, which opens the activation form. If you don't have any trial time left, the activation form will open automatically when logging in. Enter the activation code in the fields.
 
@@ -81,7 +92,9 @@ For online activation, ensure you are:
 ### Overview of RPA w/ OpCon
 #### RPA Configuration in VisualCron  
 This is a representation of the structure of all VisualCron objects to consider when planning a workflow.    
+
  ![RPA Job Flow](../static/img/rpajobflow.png)  
+
 :::note
 The flow is: Trigger > Condition > Task > Notification.
 1. One trigger (type time or event) fires a Job to run.
@@ -115,13 +128,17 @@ The VisualCron Client is a separate application that constitutes the main type o
 The client application is started from the Windows desktop icon (VisualCron X) or the Start menu Program > VisualCron X > VisualCron Client. 
 
 ![Tray Client](../static/img/trayclient.png)  
+
 You can also double click on or open the VisualCron Tray Client to start the VisualCron Client.
 - As the VisualCron server handles the defined Jobs, the VisualCron client can only connect to the VisualCron server when the server is running.
 - As the VisualCron server runs as a service, the client application can be closed without affecting the core server activities.
 
 ### Server Configuration
-![Server Settings](../static/img/ServerSettings.jpg)  
+
+![Server Settings](../static/img/ServerSettings.png)  
+
 #### General Server Settings
+
 The VisualCron server runs as a Windows service in the background. The server service status is Started when the server computer is started.
 
 The VisualCron server application status can be **On** or **Off**. If the server is On, it will be looking for Jobs to run. If Off, no Jobs will be run unless a user forces it manually in a client. The server application is running, even if no one is logged on to the computer where the server is running or if no client application is connected to the server.
@@ -133,33 +150,48 @@ The default port number between the VisualCron Server and the Client is **16444*
 :::
 
 #### Enable the Web REST API
-![Enable Web API](../static/img/WebAPISettings.jpg)  
+
+![Enable Web API](../static/img/WebAPISettings.jpg) 
+
 :::tip Server Health
+
 ![Server Health](../static/img/serverhealth.jpg)  
+
 Click on the health status indicator to view the server's historical performance.
+
 :::
 
 ---
 
 ## Workflow Configuration
+
 ### RPA Job Configuration with VisualCron
 
+
 #### Step 1 - Set up Environment Credentials and Connections    
-Create and manage system and user requirements for authentication between required services and the server environment.  
+Create and manage system and user requirements for authentication between required services and the server environment. 
+
 ![Credentials](../static/img/Credential.jpg)  
+
 - From server settings menu, navigate and select the _**Credentials**_ view.  
  
 ![Connections](../static/img/Connection.jpg)  
+
 - From server settings menu, navigate and select the _**Connections**_ view.  
 - These can be reused as required when creating new jobs and tasks.
 
 #### Step 2 - Create a New Job
+
 Create a new job for grouping one or more related RPA tasks for acheiving a desired workflow.
+
 ![RPA Job](../static/img/RPAJob.jpg)
+
  - Right click on the Job Group View, navigate and select _**Add Job**_ from the menu. 
 
 :::tip Confirm ROI Values when Creating a new Job
+
 ![Job ROI Settings](../static/img/JobROIValues.jpg)   
+
 ROI value is captured at the job level.  Ensure your default ROI settings are updated and configured during job creation to start capturing history.  
 
 The unit value is based on the currency configured in Server > ROI settings.  (**[Where to update default ROI values](#Measure-and-Track-ROI-for-RPA-Tasks)**)   
@@ -168,30 +200,41 @@ The unit value is based on the currency configured in Server > ROI settings.  (*
 :::
 
 ##### Create an RPA Task for a Web Based Process   
+
 Add and record one or more web rpa tasks.  This task type should be used for recording manual tasks with a web browser and supports background replay of multiple tasks in paralell.
+
 ![Web RPA Task Type](../static/img/WebMacro.jpg)  
+
  - Right click on the RPA job, navigate and select _**Add Task > Net > Web Macro**_ 
 
 ##### Create an RPA Task for Windows Desktop and Hybrid *(Web & Desktop)* Processes
+
 Add and record one or more desktop or hybrid tasks.  This task type should only be used for recording simple desktop tasks and requires full control of the host system.
+
  ![Desktop and Hybrid RPA Task Type](../static/img/robot.jpg)  
+
  - Right click on the RPA job, navigate and select _**Add Task > Interactivity > Robot**_  
 
 :::caution
+
 - The RPA desktop recorder will take full control of the host system in order to execute the workflow.
   - A dedicated machine is preferred for executing the playback of desktop rpa tasks in order to ensure sufficient resources are available and that the recording and playback of tasks do not interfere with the management of other critical operations. 
 
 - RPA desktop tasks can only support recording workflow on the host system which VisualCron is installed.
   - The RPA desktop recorder does not currently support the ability to replay workflow recorded on a remote virtual machine.
+
 :::
 
 #### Step 3 (Optional) - Use Conditions or Triggers for Jobs and Tasks 
 
 ##### Configure a Job or Task Condition
+
 ![Workflow Conditions](../static/img/Conditions.jpg)  
+
  - Right click to edit an RPA **job or task**, navigate to the _**Condition Tab**_ to configure a conditional status requirement for starting the RPA **job or task**.
 
 ##### Configure a Job Trigger
+
 ![Job Triggers](../static/img/Trigger.jpg)  
  
  - Select the Triggers tab from the **Edit Job* view to add a time or event trigger.
@@ -199,6 +242,7 @@ Add and record one or more desktop or hybrid tasks.  This task type should only 
 
 
 :::tip Ideas for getting started with with OpCon RPA 
+
 **Ideas for RPA Job Execution**  
  - Start an rpa job on specific days of the week and/or time of the day.
 
@@ -230,12 +274,15 @@ Add and record one or more desktop or hybrid tasks.  This task type should only 
 
  - Perform a task for a web browswer based application.  
   -- *ex. Update customer and employee information.*  
+
 :::
 
 ### Orchestration with OpCon
+
 #### Managing Job Execution with OpCon
 
 ![OpCon Studio](../static/img/studio.jpg)  
+
 **Schedule by Frequency *(Time)* or Dependency _(Event)_**  
  - Orchestrate RPA workflow with OpCon by expanding schedules to include and start execute RPA jobs remotely.  
 
@@ -245,14 +292,18 @@ Add and record one or more desktop or hybrid tasks.  This task type should only 
   -- Output of a previous job *(variable trigger)*  
 
 :::tip
-Supplement daily workflows with RPA jobs to reduce their overall manual burden or to extend the workflow for existing schedules.  
+
+Supplement daily workflows with RPA jobs to reduce their overall manual burden or to extend the workflow for existing schedules. 
+
 :::
 
 ![OpCon Self Service](../static/img/SelfService.jpg) 
+
 **Use Self-Service Buttons _(On-Demand)_**
 RPA jobs can also be initiated on-demand by configuring a self-service button for users to either trigger the RPA job directly or indirectly by fulfilling a required job dependency. 
 
 #### OpCon Job Configuration - Create Jobs for initiating RPA Workflow
+
 **Option 1 - Enterprise Manager: Use the OpCon Web Services Connector with a Job Template**
   1. Install the web services connector ([Download and install with the Opcon Web Installer](https://smatechnologies.hosted-by-files.com/OpConPublicUtilities/OpConWebInstaller.zip))
   2. Create a new schedule or open an existing schedule in workflow designer.
@@ -266,19 +317,23 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
  - In Solution Manager, navigate to `https://localhost/library/scripts` to create a new script runner and script type.  
 
   :::note  New Script Type
+
   ![OpCon Script Runner](../static/img/ScriptType.jpg)
   `https://localhost/library/scripts/types`
     - **Name:** *Webservices*   
     - **File Extension:** *.web*   
+
   :::
 
   :::note  New Script Runner
+
   ![OpCon Script Runner](../static/img/ScriptRunner.jpg)
   `https://localhost/library/scripts/runners`
     - **Name:** *WebServicesRunner*
     - **OS:** *Windows*  
     - **Script Type:** *Webservices*  
     - **Command Template Parameters:** *C:\[Path to Webservices Connector]\SMAWSConnector.exe $FILE $ARGUMENTS*  
+
   :::
 
   ![OpCon Upload Script](../static/img/uploadscript.jpg)  
@@ -292,12 +347,15 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
 
 ---
 ### OpCon RPA Web Services Script
+
 :::note OpCon RPA Web Services Script Overview
+
 *This example script below performs 4 functions and can be leveraged as a template for setting up RPA with OpCon:*  
 1. Retrieve an authentication token and update the associated variable for subsequent steps.  
 2. Retrieve the id of the job (required to start the task).  
 3. Start the task by passing variable values.  
 4. Monitor the task to completion.  
+
 :::
 
 ```json
@@ -398,39 +456,61 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
 ---
 
 ## Reporting & Metrics
+
 ### RPA Job History
+
 ![Job History](../static/img/JobHistoryDetails.jpg)
+
 :::tip
+
 - To access job or task log history: Right click on a job or task and select _**log history**_ from the menu.
 :::
 ### Measure and Track ROI for RPA Tasks
+
 ![ROI Settings](../static/img/configureROI.jpg)
+
 #### ROI Performance
+
 ##### Review ROI Savings by Time or Cost
+
 ![ROI Report](../static/img/ROIHistory.jpg)
+
 ##### Review ROI Savings by Job
+
 ![Job ROI History](../static/img/JobROIHistory.jpg)
 
-
 ## Troubleshooting & Support
+
 ### RPA Job and Task Status & Results
+
 :::tip Operational Status
+
 ![Operational Status](../static/img/operationalstatus.jpg)  
+
 For quick access to a summary of active jobs or recent job failures, navigate to the failed jobs or running jobs view on the server settings tab. 
+
 :::
+
 #### Audit History
+
 ![Audit History](../static/img/AuditHistoryDetails.jpg)
+
 ### RPA Job Logs  
+
 To access job or task log history: Right click on a job or task and select _**log history**_ from the menu.
 - Settings for debug log entries are found in the main menu Manage -> Manage server settings -> Log settings tab.
 - Additional debug and log information is available for the server and log function.
+
 ### Known Limitations
+
 - The RPA desktop recorder will take full control of the host system in order to execute the workflow.
   - A dedicated machine is preferred for executing the playback of desktop rpa tasks in order to ensure sufficient resources are available and that the recording and playback of tasks do not interfere with the management of other critical operations. 
 
 - RPA desktop tasks can only support recording workflow on the host system which VisualCron is installed.
   - The RPA desktop recorder does not currently support the ability to replay workflow recorded on a remote virtual machine.
+
 ### Support Information
+
 **[SMA Support Links and User Community](https://smatechnologies.my.site.com/SMAOpConUserCommunity/s/login/)**  
 **[Full VisualCron User Documentation](https://www.visualcron.com/documentation.aspx)**  
 
