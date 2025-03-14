@@ -128,7 +128,7 @@ You should have 3 items ready for before you get started with the RPA cloud setu
 3.	Click Add to add a new Agent.
  1.	Give your agent a name, remember this name, you’ll need it later.
  2.	Open up the General Settings section.
-  1.	Set NetCom Name to the NetCom Relay name you chose in step 11 of Solution Manager Setup section. For On-Prem you should use <Default>.
+  1.	Set NetCom Name to the NetCom Relay name you chose in step 11 of Solution Manager Setup section. For On-Prem you should use \<Default\>.
   ![Activate License](../static/img/Testing_Step3_2_1.png) 
  3.	Select RPA from the type drop down above General Settings.
  4.	Open the RPA Settings section at the bottom of the page.
