@@ -1,5 +1,5 @@
 module.exports = {
   mySidebar: [
-    'index',
+    'index', 'visualcron-rpa'
   ],
 };
