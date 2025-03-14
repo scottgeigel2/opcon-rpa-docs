@@ -1,6 +1,6 @@
 ---
-slug: '/'
-sidebar_label: 'OpCon RPA'
+sidebar_label: 'VisualCron RPA'
+hide_title: true
 ---
 
 # VisualCron RPA
