@@ -118,7 +118,7 @@ You should have 3 items ready for before you get started with the RPA cloud setu
 4.	(Skip for On-Prem) Restart the Relay service with the following steps:
  1.	In the Windows start menu type Services.exe and open it.
 5.	(Skip for On-Prem) Right click on SMA – OpCon Relay – [your chosen name] 
-![Activate License](../static/img/RPAAgentNetComSetup_Step25_1.png) 
+![Activate License](../static/img/RPAAgentNetComSetup_Step5_1.png) 
 6.	(Skip for On-Prem) From the context menu select restart.
 ![Activate License](../static/img/RPAAgentNetComSetup_Step6_1.png) 
 
