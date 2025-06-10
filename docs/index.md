@@ -22,5 +22,3 @@ OpCon RPA is an OpCon extension with exponential implications.
 
 **[SMA Support Links and User Community](https://smatechnologies.my.site.com/SMAOpConUserCommunity/s/login/)**  
 **[Full VisualCron User Documentation](https://www.visualcron.com/documentation.aspx)**  
-
----
