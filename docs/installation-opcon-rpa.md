@@ -31,54 +31,22 @@ You should have 3 items ready for before you get started with the RPA cloud setu
  5.	Leave the API Token option selected and click “Generate”.
  6.	Copy this token to your clipboard AND save it in a safe place, you will need it later. It will be used for the Relay set up
  7.	Click OK to dismiss the window.
-4.	(Skip for On-Prem) Return to the Windows Command Prompt and change directories (cd) to the directory where you have save the SMANetComRelay.exe file.  
-5.	(Skip for On-Prem) Once in the correct directory type SMANetComRelay.exe and press ENTER.
-6.	(Skip for On-Prem) You will be asked to select your next step, choose Register & Install NetCom Relay Service by pressing enter when that line is highlighted/selected.
-7.	(Skip for On-Prem) You will be asked to give a name to identify your environment. 
-![Activate License](../static/img/SolutionManagerSetup_Step7_1.png) 
- 1. You can leave it as the default or you can rename it to something different. 
- 2. Press enter when complete.
-8.	(Skip for On-Prem) You will be asked to enter a Relay name.
-![Activate License](../static/img/SolutionManagerSetup_Step8_1.png) 
- 1. You can leave it as the default or you can rename it to something different. 
- 2. Press enter when complete.
-9.	(Skip for On-Prem) You will be asked to enter your OpCon URI.
-![Activate License](../static/img/SolutionManagerSetup_Step9_1.png) 
- 1. You must ender the fully qualified domain name here including the https://
- 2. Press enter when complete.
-10.	(Skip for On-Prem) You will be asked for the External Event Token.  This is the token you created in step 3.5 in this section above.
-![Activate License](../static/img/SolutionManagerSetup_Step10_1.png) 
- 1. Type or paste the token in.
- 2. Press enter when complete.
-11.	(Skip for On-Prem) Take a screen capture, you will want the name of this Relay later. In this example the name is: HEATHERMCBRA617. But you should use the name you chose in step 7 of this section.
-![Activate License](../static/img/SolutionManagerSetup_Step11_1.png) 
-12.	(Skip for On-Prem) Relay should now officially be installed.
+ 8. For instructions on how to set up Relay, [click here](https://help.smatechnologies.com/opcon-relay#install)
 
 #### RPA Agent and Relay Connection setup
 1.	In your Windows File Explorer Navigate to C:\Programdata.   
 2.	Drill down into the OpConxps directory until you reach the Plugins directory.
- - PRO TIP: the SMANetComRelay.exe file that exists in this directory should be kept.  Ensure it is in a place where it will not be deleted. The best place for this file is: C:\Program Files\OpConxps\Relay.
-![Activate License](../static/img/RPAAgentNetComSetup_Step2.png) 
 3.	Open the Plugins directory, this is where you’re going to put the RPA Plugin DLL file. For On-Prem users this should be C:\ProgramData\OpConxps\SAM\plugins.
  1.	Navigate to where you have the The ACS Plugin DLL.  It is called sma.acs.OpConRPA.dll. 
  2.	Move this .dll file into the plugins directory shown in step 2 of this section.
-4.	(Skip for On-Prem) Restart the Relay service with the following steps:
- 1.	In the Windows start menu type Services.exe and open it.
-5.	(Skip for On-Prem) Right click on SMA – OpCon Relay – [your chosen name] 
-![Activate License](../static/img/RPAAgentNetComSetup_Step5_1.png) 
-6.	(Skip for On-Prem) From the context menu select restart.
-![Activate License](../static/img/RPAAgentNetComSetup_Step6_1.png) 
 
 #### Testing what you’ve set up so far:
 1.	Opening Solution Manager.
 2.	Navigate to the Library > Agents.
 3.	Click Add to add a new Agent.
- 1.	Give your agent a name, remember this name, you’ll need it later.
- 2.	Open up the General Settings section.
-  1.	Set NetCom Name to the NetCom Relay name you chose in step 11 of Solution Manager Setup section. For On-Prem you should use \<Default\>.
-  ![Activate License](../static/img/Testing_Step3_2_1.png) 
- 3.	Select RPA from the type drop down above General Settings.
- 4.	Open the RPA Settings section at the bottom of the page.
+ 1.	Give your agent a name, remember this name, you’ll need it later. 
+ 2.	Select RPA from the type drop down above General Settings.
+ 3.	Open the RPA Settings section at the bottom of the page.
   1.	Leave this open, you’ll come back to it shortly.
 
 #### FINALLY the RPA Installer
