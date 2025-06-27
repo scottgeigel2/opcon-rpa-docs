@@ -21,7 +21,6 @@ module.exports = {
       'visualcron-rpa',
       'system-requirements-visualcron-rpa',
       'acquiring-a-license-visualcron-rpa',
-      'installation-opcon-rpa-visualcron',
       'installation-visualcron-rpa',
       'overview-visualcron-rpa',
       'navigation-visualcron-rpa',
