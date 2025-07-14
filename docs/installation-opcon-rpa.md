@@ -17,21 +17,17 @@ You should have 3 items ready for before you get started with the RPA cloud setu
 3.	The RPA Agent installer named <ins>RPAAgent.1.0.0</ins>.
 
 #### Solution Manager Setup
-1.	Log into Solution Manager
-2.	Navigate to the Access Management screen
-  1.	On the USER tab select the user who will be configuring the RPA connection.
-  2.	In the context of the selected user click the SETTINGS tab.
-  3.	Ensure the selected user has “Enable external tokens” checked.
-  4.	If this option was not checked and the user is currently signed in, this user will need to sign back in before this change will take affect.
-3.	Navigate to your user profile page.
- 1.	On this page within the ACCOUNT tab ensure that you have a password set.
- 2.	Make sure you remember this password, you’ll need it later.
- 3.	Click to save.
- 4.	Navigate to the EXTERNAL TOKEN tab.
- 5.	Leave the API Token option selected and click “Generate”.
- 6.	Copy this token to your clipboard AND save it in a safe place, you will need it later. It will be used for the Relay set up
- 7.	Click OK to dismiss the window.
- 8. For instructions on how to set up Relay, [click here](https://help.smatechnologies.com/opcon-relay#install)
+1.  Log into Solution Manager with a user who has privileges to add users and grant the ‘Role_ocadm’ Role.
+2.  Create a User for RPA (This user will be used later in the Step for the RPA Tray Client ‘In the OpCon API User field enter the username you’re logged in with your instance of Solution Manager’
+3.  Navigate to LIBRARY → ACCESS MANAGEMENT → USERS → “+” to add a new user in the context of the selected user click the SETTINGS tab.
+   1.  First Name: RPA
+   2.  Last Name: User
+   3.  Username: RPAUser
+   4.  Password: (Set to unique value and remember for later)
+   5.  Click on the button labeled “Save”
+   6.  Click on the ROLES tab and check the box for Role_ocadm and click on the button labeled “Save”
+   7.  Click on the SETTINGS tab and check the box for Enable external tokens and click on
+ 4.  For instructions on how to set up Relay, [click here](https://help.smatechnologies.com/opcon-relay#install)
 
 #### RPA Agent and Relay Connection setup
 1.	In your Windows File Explorer Navigate to C:\Programdata.   
