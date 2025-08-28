@@ -13,12 +13,19 @@ You should have 3 items ready for before you get started with the RPA cloud setu
 1.	The NetCom Relay installer, <ins>SMANetcomRelay.exe</ins>.  The NetCom Relay installer is not needed if you are not integrating RPA with a cloud instance of OpCon CORE Automate/Solution Manager.  For instructions on how to set up Relay, [click here](https://help.smatechnologies.com/opcon-relay#install)
   1.	On your Windows Computer open the command prompt and choose “Run as Administrator”.
   2.	When prompted if you’d like to allow this app to make changes to your device, choose “Yes”.
-2.	The ACS Plugin DLL named <ins>sma.acs.OpConRPA.dll</ins>.
-3.	The RPA Agent installer named <ins>RPAAgent.1.0.0</ins>.
+
+:::tip Note
+
+3. Use the [OpCon Web Installer (OWI)](https://github.com/smatechnologies/opcon-web-installer/releases) to download the two required files mentioned below.
+
+-	The ACS Plugin DLL named <ins>sma.acs.OpConRPA.dll</ins> (In the Integrations section).
+-	The RPA Agent installer named <ins>RPAAgent.1.0.0</ins> (In the Agents section).
+
+:::
 
 #### Solution Manager Setup
 1.  Log into Solution Manager with a user who has privileges to add users and grant the ‘Role_ocadm’ Role.
-2.  Create a User for RPA (This user will be used later in the Step for the RPA Tray Client ‘In the OpCon API User field enter the username you’re logged in with your instance of Solution Manager’
+2.  Create a User for RPA (This user will be used later in the Step for the RPA Tray Client) ‘In the OpCon API User field enter the username you’re logged in with your instance of Solution Manager’
 3.  Navigate to LIBRARY → ACCESS MANAGEMENT → USERS → “+” to add a new user in the context of the selected user click the SETTINGS tab.
    1.  First Name: RPA
    2.  Last Name: User
