@@ -10,16 +10,17 @@ The RPA Agent and Netcom Relay will need to be installed on the windows system t
 
 You should have 3 items ready for before you get started with the RPA cloud setup. 
 
-1.	The NetCom Relay installer, <ins>SMANetcomRelay.exe</ins>.  The NetCom Relay installer is not needed if you are not integrating RPA with a cloud instance of OpCon CORE Automate/Solution Manager.  For instructions on how to set up Relay, [click here](https://help.smatechnologies.com/opcon-relay#install)
-  1.	On your Windows Computer open the command prompt and choose “Run as Administrator”.
-  2.	When prompted if you’d like to allow this app to make changes to your device, choose “Yes”.
+1.	The NetCom Relay installer, <ins>SMANetcomRelay.exe</ins>.  The NetCom Relay installer is not needed if you are not integrating RPA with a cloud instance of OpCon CORE Automate/Solution Manager.  For instructions on how to set up Relay, [click here](https://help.smatechnologies.com/opcon-relay#install).
+  - On your Windows Computer open the command prompt and choose “Run as Administrator”.
+  - When prompted if you’d like to allow this app to make changes to your device, choose “Yes”.
+
+2.	The ACS Plugin DLL named <ins>sma.acs.OpConRPA.dll</ins>.
+
+3. The RPA Agent Installer named <ins>RPAAgent.1.0.0</ins>.
 
 :::tip Note
 
-3. Use the [OpCon Web Installer (OWI)](https://github.com/smatechnologies/opcon-web-installer/releases) to download the two required files mentioned below.
-
--	The ACS Plugin DLL named <ins>sma.acs.OpConRPA.dll</ins> (In the Integrations section).
--	The RPA Agent installer named <ins>RPAAgent.1.0.0</ins> (In the Agents section).
+Use the [OpCon Web Installer (OWI)](https://github.com/smatechnologies/opcon-web-installer/releases) to download the **ACS Plugin DLL** (In the Integrations section) and **RPA Agent Installer**  (In the Agents section).
 
 :::
 
