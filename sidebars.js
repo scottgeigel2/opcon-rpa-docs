@@ -10,6 +10,7 @@ module.exports = {
       'acquiring-a-license-opcon-rpa',
       'installation-opcon-rpa',
       'orchestration-with-opcon-opcon-rpa',
+      'mapping-opcon-properties',
       'troubleshooting-opcon-rpa',
       ],
     },
