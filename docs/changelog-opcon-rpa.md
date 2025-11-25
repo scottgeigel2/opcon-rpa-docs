@@ -36,6 +36,6 @@ Please ensure your environment is updated before deploying the RPA Agent.
 
 **__Ensure the Relay version is 25.3.0 or higher before proceeding.__**
 
-[Refer to the installation instructions](installation-opcon-rpa) for upgrading the pugin.
+[Refer to the installation instructions](installation-opcon-rpa) for upgrading the plugin.
 It's possible Netcom and/or the Rest Api will have a lock on the file, so you may need to stop ServMan briefly.
 
