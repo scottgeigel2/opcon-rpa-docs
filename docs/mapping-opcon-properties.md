@@ -24,12 +24,12 @@ so like the previous screenshots, the Name here will be "mysi"
 #### Default Value
 This value will be selected if OpCon has not supplied an Instance Property with the name. For debugging purposes, it can be
 helpful to put a known bad value that is easy to spot. This value will also be used whenever performing a Test Run or running
-from the task grid of RPA making this good for testing how the task will perform before actually attempting to run the job 
+from the task grid of RPA; making this useful for testing how the task will perform before actually attempting to run the job 
 from OpCon.
 #### Output Expression
 This is what the Job/Schedule Instance Property will be assigned after the task runs; this will occur whether the task succeeds or fails.
 **If no output alteration is desired, this field can be left blank**.
-RPA will run evaluate the text in this field; so anything from the RPA Variables screen may be used such as *User Variables* and
+RPA will evaluate the text in this field as an Expression; so anything from the RPA Variables screen may be used such as *User Variables* and
 *Builtin Functions* (such as Math, File variables, etc).
 
 ![A demonstration of using a builtin function](../static/img/opcon_property_mapping/RPA_definesi.png)
