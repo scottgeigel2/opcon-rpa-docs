@@ -11,6 +11,7 @@ module.exports = {
       'installation-opcon-rpa',
       'orchestration-with-opcon-opcon-rpa',
       'mapping-opcon-properties',
+      'rpa-execution-context',
       'troubleshooting-opcon-rpa',
       'changelog-opcon-rpa',
       ],
