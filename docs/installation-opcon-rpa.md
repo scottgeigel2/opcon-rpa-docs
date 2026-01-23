@@ -16,7 +16,7 @@ You should have 3 items ready for before you get started with the RPA cloud setu
 
 2.	The ACS Plugin DLL named <ins>sma.acs.OpConRPA.dll</ins>.
 
-3. The RPA Agent Installer named <ins>RPAAgent.1.0.0</ins>.
+3. The RPA Agent Installer named <ins>RPAAgent__*x.y.z*__.msi</ins> (x.y.z being the version number).
 
 :::tip Note
 
@@ -49,6 +49,9 @@ Use the [OpCon Web Installer (OWI)](https://github.com/smatechnologies/opcon-web
 3.	Click Add to add a new Agent.
  1.	Give your agent a name, remember this name, you’ll need it later. 
  2.	Select RPA from the type drop down above General Settings.
+ 2.	When prompted, enter the Netcom Relay Name before you can access the RPA Settings page — enter the name used during relay installation, or type `<Default>` if you are not using a relay (see screenshot below).
+ 
+   ![Netcom Relay Name Prompt](../static/img/netcomname.png)
  3.	Open the RPA Settings section at the bottom of the page.
   1.	Leave this open, you’ll come back to it shortly.
 
