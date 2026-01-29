@@ -29,17 +29,37 @@ Use the [OpCon Web Installer (OWI)](https://github.com/smatechnologies/opcon-web
 
 Check the upgrade considerations to see if you need to update the ACS plugin
 
-:::info Backup Instructions
-If you would like to make a backup of your settings:
+#### Before updating — stop the RPA Agent service and Tray Client
+Do these steps before running the installer every time you update.
 
 1. **Stop the RPA Agent service:** Press the Windows key, type **services.msc**, and press Enter. In the list, find "OpCon RPA Agent" (or "RPA Agent"), right-click it, and choose **Stop**.
-2. **Open the installation folder:** Open File Explorer, type or paste **C:\Program Files\RPAAgent** into the address bar, and press Enter.
-3. **Back up your settings:** Right-click **appsettings.json** → **Copy**, then paste it into a safe folder (for example, your Desktop or Documents). Do the same for the **DataCache** folder—copy the whole folder to your safe location. Optionally, right-click the DataCache folder and choose **Send to** → **Compressed (zipped) folder** to create a zip file.
+2. **Close the Tray Client:** Exit the RPA Tray Client completely. Check that it is not just minimized to the system tray (the area near the clock in the bottom-right corner). If you see the RPA icon there, right-click it and choose **Exit** or **Close**.
 
+![TrayClient](../static/img/tray.png)
+
+:::info Backup Instructions (optional)
+If you would like to make a backup of your settings before updating:
+
+1. **Open the installation folder:** Open File Explorer, type or paste **C:\Program Files\RPAAgent** into the address bar, and press Enter.
+2. **Back up your settings:** Right-click **appsettings.json** → **Copy**, then paste it into a safe folder (for example, your Desktop or Documents). Do the same for the **DataCache** folder—copy the whole folder to your safe location. Optionally, right-click the DataCache folder and choose **Send to** → **Compressed (zipped) folder** to create a zip file.
 :::
 
-The RPA Agent Installer is named <ins>RPAAgent__*x.y.z*__.msi</ins> (x.y.z is the version number). After downloading from OWI, it is usually in your **Downloads** folder (Open File Explorer and click "Downloads" in the left side, or check your browser’s download list).
+#### Run the update
+The RPA Agent Installer is named <ins>RPAAgent__*x.y.z*__.msi</ins> (x.y.z is the version number). After downloading from OWI, it is usually in your **Downloads** folder (Open File Explorer and click "Downloads" on the left, or check your browser’s download list).
 
-Double-click the .msi file. When Windows asks "Do you want to allow this app to make changes to your device?", choose **Yes**. The update should then complete without further steps and the Tray Client will restart.
+Double-click the .msi file. When Windows asks "Do you want to allow this app to make changes to your device?", choose **Yes**. The update will complete and may relaunch the Tray Client automatically.
+#### After the update — verify the service and Tray Client are running
+After the installer finishes, confirm that both the RPA Agent service and the Tray Client are running. If either is not running, use the steps below to start it.
+
+**1. Verify and start the RPA Agent service**
+- Press the Windows key, type **services.msc**, and press Enter.
+- In the list, find **OpCon RPA Agent** (or **RPA Agent**).
+- Check the **Status** column. It should say **Running**.
+- If it does not say Running, right-click the service and choose **Start**.
+
+**2. Verify and start the Tray Client**
+- Look for the RPA icon in the system tray (near the clock in the bottom-right corner). If you see it, the Tray Client is running.
+- If you do not see the RPA icon, start the Tray Client manually: press the Windows key, type **OpCon RPA** (or the name of your RPA application), and click it in the Start menu. You can also look under **Start → All Apps** for the OpCon RPA entry.
+- Once the Tray Client is open, you can minimize it to the tray; the Agent is then active and ready for use.
 
 
