@@ -9,6 +9,7 @@ module.exports = {
       'system-requirements-opcon-rpa',
       'acquiring-a-license-opcon-rpa',
       'installation-opcon-rpa',
+      'update-opcon-rpa',
       'orchestration-with-opcon-opcon-rpa',
       'mapping-opcon-properties',
       'troubleshooting-opcon-rpa',
