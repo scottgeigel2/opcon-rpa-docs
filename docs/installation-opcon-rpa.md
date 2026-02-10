@@ -34,7 +34,7 @@ Use the [OpCon Web Installer (OWI)](https://github.com/smatechnologies/opcon-web
    4.  Password: (Set to unique value and remember for later)
    5.  Click on the button labeled “Save”
    6.  Click on the ROLES tab and check the box for Role_ocadm and click on the button labeled “Save”
-   7.  Click on the SETTINGS tab and check the box for Enable external tokens and click on
+   7.  Click on the SETTINGS tab and check the box for Enable external tokens and click on the button labeled "Save".
 
 #### RPA Agent and Relay Connection setup
 1.	In your Windows File Explorer Navigate to C:\Programdata.   
