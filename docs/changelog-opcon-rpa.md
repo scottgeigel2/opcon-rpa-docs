@@ -3,6 +3,27 @@ sidebar_label: 'Change Log'
 ---
 
 # Change Log 
+### 1.1.0 (April 2026)
+
+#### 1. Features Introduced
+OpCon-Independent Operation (__CON-459__)
+RPA can now be deployed and run without OpCon. Task storage moved to a local database, removing the dependency on the OpCon API.
+
+Copy/Delete Existing Workflows (__CON-69__)
+Added Copy and Delete actions on the Draft and Archive grids. Copy supports copying all versions, copying a specific version as Version 1, or copying a specific version as a draft. Per-row Delete and Run buttons are disabled during task execution to prevent accidental actions on a running task. Task version numbers are now auto-incremented on save.
+
+ACS Plugin Update (__CON-1039__)
+Updated the ACS plugin.
+
+VisualCron Upgrade (__CON-1044__)
+Upgraded VisualCron from 12.2.x to 12.3.1.
+
+#### 2. Bug Fixes
+
+- __CON-1497__ – Fixed TrayClient busy-loop that caused high CPU usage when polling the Agent for heartbeat status with no active tasks.
+- __CON-1493__ – Agent now detects a newer (v1.2.0) database format at startup and fails fast rather than corrupting data on downgrade.
+- __CON-1209__ – Normalized error message is now propagated to the UI when the script endpoint errors.
+
 ### 1.0.2 (February 2026)
 
 #### 1. Features Introduced

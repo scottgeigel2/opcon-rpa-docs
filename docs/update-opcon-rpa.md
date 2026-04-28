@@ -6,6 +6,17 @@ hide_title: true
 # Update - OpCon RPA
 
 ### Update Considerations
+
+#### 1.1.0
+##### Plugin update
+Changed task schema to fetch data from the OpCon RPA server for querying and executing tasks.
+Old master jobs will continue to run, but editing will display upgrade instructions.
+##### Agent/TrayClient
+Deleted OpCon Settings tab. It is no longer necessary to maintain an OpCon user for RPA.
+Tasks are now stored locally on the RPA Agent instead of in the OpCon Script Repository.
+Your existing tasks should exist just fine in the database though you should make sure to
+stop the RPA Agent before removing the OpCon user associated with it.
+
 #### 1.0.2
 ##### Plugin update
 No update was made to the ACS plugin.

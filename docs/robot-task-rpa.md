@@ -31,9 +31,9 @@ recording actions the user performs on their desktop and dragging and dropping i
 | **Multi-User** | Windows Server 2016/2019/2022 | Multiple users can have active desktop sessions simultaneously |
 
 ## Execution Context
-The execution context can be found on the main form with the button named _Execution Context_. This will set up the rules
-of how your task will interact with the machine before and after it runs. The Execution Context is set to the user that is
-currently logged in and editing the task.
+The Execution Context configures how your task interacts with the machine before and after it runs. Open it from the main form using the _Execution Context_ button. The context is set to the currently logged-in user.
+
+To assign a user, click "Update Credentials" or "Add Credentials" in the Execution Context dialog.
 
 :::tip Note
 When another user edits this task, your Execution Context settings will remain unchanged unless they specifically open the Execution Context menu.
@@ -58,13 +58,9 @@ For Single User Machines (i.e., Windows Desktop editions), there can only be one
 
 #### Before Execution Behaviors
 
-In the screenshot, a user has already been selected. To assign your user to the task, click either "Update Credentials" or "Add Credentials".
-
 __Leave task in queue until user locks session__
 
 When RPA receives a command to execute this task, it will display a warning dialog to the currently logged-in user. The task will not run until the user locks their session (either by clicking OK on the dialog or pressing Win+L).
-
-This setting can slow down automation, but is useful for testing or when combined with _Execute without prompt if active session is same user_.
 
 **If a different user is logged in:**
 ![warn different user](../static/img/Tasks/Robot/execution-single-user-different-warn.png)
@@ -86,28 +82,13 @@ __Lock other session__
 When selected, RPA will automatically lock the active session if it belongs to a different user than the Execution Context user.
 If the active session already belongs to the Execution Context user, RPA will proceed directly to execution.
 
-#### After Execution Behaviors
-__Lock Workstation__
-
-This is the more secure option that locks the current user (equivalent of Win+L) after the task has completed.
-
-__Do nothing__
-
-This will leave the executing user's session unlocked. This is useful if you are chaining multiple RPA tasks
-under the same user to prevent delays caused by repeatedly locking and unlocking sessions.
-
-
 ### Multi-User Machines
 For Multi-User Machines (i.e., Windows Server editions), there can be several active desktop sessions at a time.
-Since multiple users can be logged in simultaneously, session switching is not needed. However, locking sessions remains important for security.
-
-**Note:** When RPA locks a session, it does not terminate RDP connections. If the user was logged in through RDP, the connection remains active, but the session will show a lock screen.
+Since multiple users can be logged in simultaneously, session switching is not needed. However, locking sessions remains important for security. When RPA locks a session, RDP connections remain active but the session will show a lock screen.
 
 ![Multi User context](../static/img/Tasks/Robot/execution-context-multi-user.png)
 
 #### Before Execution Behaviors
-
-In the screenshot, a user has already been selected. To assign your user to the task, click either "Update Credentials" or "Add Credentials".
 
 Before the task executes, the session will be unlocked (if it was locked).
 
@@ -123,7 +104,10 @@ __Execute on session without prompt__
 
 When selected, RPA will automatically execute on the user's session without displaying any warnings or confirmation dialogs.
 
-#### After Execution Behaviors
+### After Execution Behaviors
+
+These settings apply to both Single User and Multi-User machines.
+
 __Lock Workstation__
 
 This is the more secure option that locks the current user (equivalent of Win+L) after the task has completed.

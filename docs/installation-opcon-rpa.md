@@ -24,18 +24,6 @@ Use the [OpCon Web Installer (OWI)](https://github.com/smatechnologies/opcon-web
 
 :::
 
-#### Solution Manager Setup
-1.  Log into Solution Manager with a user who has privileges to add users and grant the ‘Role_ocadm’ Role.
-2.  Create a User for RPA (This user will be used later in the Step for the RPA Tray Client) ‘In the OpCon API User field enter the username you’re logged in with your instance of Solution Manager’
-3.  Navigate to LIBRARY → ACCESS MANAGEMENT → USERS → “+” to add a new user in the context of the selected user click the SETTINGS tab.
-   1.  First Name: RPA
-   2.  Last Name: User
-   3.  Username: RPAUser
-   4.  Password: (Set to unique value and remember for later)
-   5.  Click on the button labeled “Save”
-   6.  Click on the ROLES tab and check the box for Role_ocadm and click on the button labeled “Save”
-   7.  Click on the SETTINGS tab and check the box for Enable external tokens and click on the button labeled "Save".
-
 #### RPA Agent and Relay Connection setup
 1.	In your Windows File Explorer Navigate to C:\Programdata.   
 2.	Drill down into the OpConxps directory until you reach the Plugins directory.
@@ -70,11 +58,4 @@ Use the [OpCon Web Installer (OWI)](https://github.com/smatechnologies/opcon-web
 8.	Paste that token in the API Token field within Solution Manager.
 ![Activate License](../static/img/RPAInstaller_Step8.png) 
 9.	Click to save your Solution Manager changes
-10.	In the RPA “Settings” interface click on the OpCon API tab.
-![Activate License](../static/img/RPAInstaller_Step10.png) 
-11.	In the OpCon API URL field enter the same fully qualified domain name that you set in the Solution Manager Setup step 9. For On-Prem this is likely the base domain of your Solution Manager instance.
-12.	In the OpCon API User field enter the username you’re logged in with your instance of Solution Manager.
-13.	In the OpCon API Password field enter the password you set in step 3.2 of the Solution Manager Setup section.
-14.	In the OpCon Agent Name field enter the name of the Agent you just created in step 3.1 of the Testing What You’ve Setup So Far.
-15.	Click Get OpCon API Token in the lower right corner of the RPA interface.
-16.	You should receive a success message at this point!!! Congratulations you’re ready to go!!!
+
