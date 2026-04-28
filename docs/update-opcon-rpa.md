@@ -37,6 +37,15 @@ You need:
 
 Read the entry for the version you are updating to **before** running the installer. Each entry tells you whether the ACS plugin must be updated and whether any post-update work is required.
 
+### 1.1.0
+
+| Topic | What to know |
+|-------|-------------|
+| ACS plugin update | **Required.** The task schema changed so that tasks are fetched from the OpCon RPA server for querying and running. Update the ACS Plugin DLL. |
+| Task storage | Tasks are now stored locally on the RPA Agent instead of in the OpCon Script Repository. Existing tasks remain available in the local database. |
+| OpCon user | OpCon RPA no longer requires an OpCon user. The OpCon Settings tab has been removed from the Tray Client. Stop the RPA Agent before removing the OpCon user that was associated with it. |
+| Existing master jobs | Existing master jobs continue to run. When you edit one, OpCon displays upgrade instructions. |
+
 ### 1.0.2
 
 | Topic | What to know |

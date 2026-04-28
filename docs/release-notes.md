@@ -5,6 +5,72 @@ doc_type: conceptual
 
 # OpCon RPA Release Notes
 
+## Spring 26
+
+### 1.1.0
+
+**NOTE**: This release requires an ACS Plugin DLL update. The task storage model also changed — tasks are now stored locally on the RPA Agent instead of in the OpCon Script Repository, and an OpCon user is no longer required. See [Update - OpCon RPA Agent and ACS plugin](./update-opcon-rpa.md) for the required post-update tasks.
+
+2026 April
+
+# OpCon RPA Release 1.1.0 – What's New
+
+## Summary
+
+Release 1.1.0 lets OpCon RPA run independently of OpCon by moving task storage to a local database, adds Copy and Delete actions for workflows on the Draft and Archive grids, updates the ACS plugin, upgrades VisualCron to 12.3.1, and resolves Tray Client CPU, database-compatibility, and error-reporting issues.
+
+## OpCon-Independent Operation
+
+### What's New
+
+:eight_spoked_asterisk: **CON-459: OpCon-Independent Operation** OpCon RPA can be deployed and run without OpCon. Task storage moved to a local database, removing the dependency on the OpCon API.
+
+### Why This Matters
+
+OpCon RPA can be adopted in environments that do not run OpCon, broadening where robot automation can be deployed.
+
+## Workflow Management
+
+### What's New
+
+:eight_spoked_asterisk: **CON-69: Copy and Delete Existing Workflows** Added Copy and Delete actions on the Draft and Archive grids. Copy supports copying all versions, copying a specific version as Version 1, or copying a specific version as a draft. Per-row Delete and Run buttons are disabled while a task is running, to prevent accidental actions on a running task. Task version numbers are incremented automatically on save.
+
+### Why This Matters
+
+You can duplicate and remove workflows directly from the grids, and automatic version numbering keeps task history consistent.
+
+## Platform & Dependencies
+
+### What's New
+
+:eight_spoked_asterisk: **CON-1039: ACS Plugin Update** Updated the ACS plugin.
+
+:eight_spoked_asterisk: **CON-1044: VisualCron Upgrade** Upgraded VisualCron from 12.2.x to 12.3.1.
+
+:white_check_mark: **CON-1355: Magick.NET Dependency Upgrade** Upgraded Magick.NET to 14.13.0 to resolve a vulnerable dependency.
+
+### Why This Matters
+
+The ACS plugin and VisualCron engine are current, and a vulnerable image-processing dependency is removed, keeping OpCon RPA aligned with supported and secure component versions.
+
+## RPA Agent & Tray Client
+
+### What's New
+
+:white_check_mark: **CON-1497: Tray Client High CPU Fix** Fixed a Tray Client busy-loop that caused high CPU usage when polling the Agent for heartbeat status with no active tasks.
+
+:white_check_mark: **CON-1493: Database Format Compatibility Check** The Agent now detects a newer (v1.2.0) database format at startup and fails fast rather than corrupting data on a downgrade.
+
+:white_check_mark: **CON-716: Duplicate Tray Client Instance Prevention** Prevented starting duplicate instances of the RPA Tray Client.
+
+:white_check_mark: **CON-1539: Single Tray Client Instance Per User Session** Limited the Tray Client to a single instance per user session.
+
+:white_check_mark: **CON-1209: Script Endpoint Error Message Propagation** The normalized error message is now shown in the UI when the script endpoint returns an error.
+
+### Why This Matters
+
+The Tray Client no longer consumes excess CPU when idle or runs as duplicate instances, the Agent protects against data corruption on downgrade, and script endpoint errors surface clearly in the UI.
+
 ## Winter 26
 
 ### 1.0.2
