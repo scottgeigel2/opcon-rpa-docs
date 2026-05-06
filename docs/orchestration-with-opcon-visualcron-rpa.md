@@ -1,86 +1,106 @@
 ---
 sidebar_label: 'Orchestration with OpCon'
+title: Orchestrating VisualCron RPA workflows with OpCon
+description: "How to manage VisualCron RPA job execution with OpCon, including frequency, dependency, and on-demand triggers, and how to configure OpCon jobs that initiate RPA workflows."
+tags:
+  - Procedural
+  - Automation Engineer
+  - RPA
 hide_title: true
 ---
 
-### Orchestration with OpCon
+# Orchestration with OpCon
 
-#### Managing Job Execution with OpCon
+## What is it?
 
-![OpCon Studio](../static/img/studio.JPG)  
+This page describes how to orchestrate VisualCron RPA jobs with OpCon, including how to start RPA jobs by frequency (date and time), by dependency, or on demand from a Self Service button. It also describes how to configure OpCon jobs that initiate the RPA workflow using either the Web Services Connector with a Job Template or the Web Services Connector with Embedded Scripts.
 
-**Schedule by Frequency *(Time)* or Dependency _(Event)_**  
- - Orchestrate RPA workflow with OpCon by expanding schedules to include and start execute RPA jobs remotely.  
+## Managing job execution with OpCon
 
- - Choose a method for starting the RPA job:  
-  -- Based on calendar and frequency  *(date and time)*  
-  -- Completion of a previous job or event in the schedule *(job dependency)*  
-  -- Output of a previous job *(variable trigger)*  
+![OpCon Studio](../static/img/studio.JPG)
+
+**Schedule by Frequency *(Time)* or Dependency _(Event)_**
+
+- Orchestrate the RPA workflow with OpCon by expanding schedules to include and start RPA jobs remotely.
+
+- Choose a method for starting the RPA job:
+  - Based on calendar and frequency *(date and time)*
+  - Completion of a previous job or event in the schedule *(job dependency)*
+  - Output of a previous job *(variable trigger)*
 
 :::tip
 
-Supplement daily workflows with RPA jobs to reduce their overall manual burden or to extend the workflow for existing schedules. 
+Supplement daily workflows with RPA jobs to reduce their overall manual burden or to extend the workflow for existing schedules.
 
 :::
 
-![OpCon Self Service](../static/img/SelfService.JPG) 
+![OpCon Self Service](../static/img/SelfService.JPG)
 
-**Use Self-Service Buttons _(On-Demand)_**
-RPA jobs can also be initiated on-demand by configuring a self-service button for users to either trigger the RPA job directly or indirectly by fulfilling a required job dependency. 
+**Use Self Service buttons _(On-Demand)_**
 
-#### OpCon Job Configuration - Create Jobs for initiating RPA Workflow
+RPA jobs can also be initiated on demand by configuring a Self Service button for users. The Self Service button can either start the RPA job directly or indirectly by satisfying a required job dependency.
 
-**Option 1 - Enterprise Manager: Use the OpCon Web Services Connector with a Job Template**
-  1. Install the web services connector ([Download and install with the Opcon Web Installer](https://smatechnologies.hosted-by-files.com/OpConPublicUtilities/OpConWebInstaller.zip))
-  2. Create a new schedule or open an existing schedule in workflow designer.
-  3. Add a new master job   
-     1. **Job Type:** *Windows*  
-     2. **Job Sub-Type:** *Web Services*  
-  4. Import the RPA job template and update the host variable and the job name variable to the name of the RPA job configured in VisualCron.  
-  - [Copy the OpCon RPA Web Services script from below and save it as .web template.](#OpCon-RPA-Web-Services-Script) `ex. OpConRPAtemplate.web`  
+## OpCon job configuration — create jobs that initiate the RPA workflow
 
-**Option 2 - Solution Manager: Use the Web Services Connector with Embedded Scripts**  
- - In Solution Manager, navigate to `https://localhost/library/scripts` to create a new script runner and script type.  
+### Option 1 — Enterprise Manager: use the OpCon Web Services Connector with a job template
 
-  :::note  New Script Type
+To create a job that initiates the RPA workflow using the Web Services Connector with a job template, complete the following steps:
 
-  ![OpCon Script Runner](../static/img/ScriptType.JPG)
-  `https://localhost/library/scripts/types`
-    - **Name:** *Webservices*   
-    - **File Extension:** *.web*   
+1. Install the Web Services Connector ([Download and install with the OpCon Web Installer](https://smatechnologies.hosted-by-files.com/OpConPublicUtilities/OpConWebInstaller.zip)).
+2. Create a new schedule or open an existing schedule in workflow designer.
+3. Add a new master job:
+   1. **Job Type:** *Windows*
+   2. **Job Sub-Type:** *Web Services*
+4. Import the RPA job template and update the host variable and the job name variable to the name of the RPA job configured in VisualCron.
+5. [Copy the OpCon RPA Web Services script from below and save it as a `.web` template](#opcon-rpa-web-services-script). Example: `OpConRPAtemplate.web`.
 
-  :::
+### Option 2 — Solution Manager: use the Web Services Connector with embedded scripts
 
-  :::note  New Script Runner
+To create a job that initiates the RPA workflow using the Web Services Connector with embedded scripts, complete the following steps:
 
-  ![OpCon Script Runner](../static/img/ScriptRunner.JPG)
-  `https://localhost/library/scripts/runners`
-    - **Name:** *WebServicesRunner*
-    - **OS:** *Windows*  
-    - **Script Type:** *Webservices*  
-    - **Command Template Parameters:** *C:\[Path to Webservices Connector]\SMAWSConnector.exe $FILE $ARGUMENTS*  
+1. In Solution Manager, go to `https://localhost/library/scripts` to create a new script runner and script type.
 
-  :::
+   :::note New Script Type
 
-  ![OpCon Upload Script](../static/img/uploadscript.JPG)  
+   ![OpCon Script Runner](../static/img/ScriptType.JPG)
+   `https://localhost/library/scripts/types`
+   - **Name:** *Webservices*
+   - **File Extension:** *.web*
 
-  2. Modify and upload the script to the OpCon script repository.  `https://localhost/library/scripts`    
-     - The script itself is parameterized for user codes, password, url, jobname, variables with the arguments set as variables.  
-  3. In Solution Manager, navigate to `https://localhost/studio` to create a new schedule or open an existing schedule in studio.
-  4. Add a new windows master job with the job action of **'Embedded Script'** and assign the script runner and embedded script to the master job and set the values for the environment variables.
+   :::
+
+   :::note New Script Runner
+
+   ![OpCon Script Runner](../static/img/ScriptRunner.JPG)
+   `https://localhost/library/scripts/runners`
+   - **Name:** *WebServicesRunner*
+   - **OS:** *Windows*
+   - **Script Type:** *Webservices*
+   - **Command Template Parameters:** `C:\[Path to Webservices Connector]\SMAWSConnector.exe $FILE $ARGUMENTS`
+
+   :::
+
+   ![OpCon Upload Script](../static/img/uploadscript.JPG)
+
+2. Modify and upload the script to the OpCon script repository at `https://localhost/library/scripts`.
+   - The script is parameterized for user codes, password, URL, job name, and variables, with the arguments set as variables.
+3. In Solution Manager, go to `https://localhost/studio` to create a new schedule or open an existing schedule in Studio.
+4. Add a new Windows master job with the job action **Embedded Script**, assign the script runner and embedded script to the master job, and set the values for the environment variables.
 
    ![OpCon Embedded Script Job](../static/img/OpConRPAJobScript.png)
 
 ---
-### OpCon RPA Web Services Script
+
+## OpCon RPA Web Services script
 
 :::note OpCon RPA Web Services Script Overview
 
-*This example script below performs 4 functions and can be leveraged as a template for setting up RPA with OpCon:*  
-1. Retrieve an authentication token and update the associated variable for subsequent steps.  
-2. Retrieve the id of the job (required to start the task).  
-3. Start the task by passing variable values.  
-4. Monitor the task to completion.  
+*This example script performs 4 functions and can be used as a template for setting up RPA with OpCon:*
+
+1. Retrieve an authentication token and update the associated variable for subsequent steps.
+2. Retrieve the id of the job (required to start the task).
+3. Start the task by passing variable values.
+4. Monitor the task to completion.
 
 :::
 
@@ -179,3 +199,14 @@ RPA jobs can also be initiated on-demand by configuring a self-service button fo
   "properties" : [ ]
 }
 ```
+
+## FAQs
+
+**Which trigger types can start an RPA job from OpCon?**
+RPA jobs can be started by frequency (date and time), by job dependency, by variable trigger, or on demand from a Self Service button.
+
+**Do I need Enterprise Manager or Solution Manager for VisualCron RPA orchestration?**
+Either tool can be used. Enterprise Manager uses the Web Services Connector with a job template; Solution Manager uses the Web Services Connector with Embedded Scripts.
+
+**What does the example Web Services script do?**
+The script retrieves an authentication token, looks up the job ID, starts the task with variable values, and polls until the task completes.
