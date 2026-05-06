@@ -1,12 +1,16 @@
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
+/** @type {import('@docusaurus/types').Config} */
 module.exports = {
   title: 'SMA Technologies Help',
   tagline: 'OpCon RPA',
   url: 'https://help.smatechnologies.com',
   baseUrl: '/opcon/agents/opcon-rpa/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
   organizationName: 'smatechnologies',
   projectName: 'opcon-rpa-docs',
   themeConfig: {
@@ -28,7 +32,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          breadcrumbs: false,
+          breadcrumbs: true,
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
@@ -39,18 +43,13 @@ module.exports = {
         },
         gtag: {
           trackingID: 'G-7XYMFXX81Y',
+          anonymizeIP: true,
         },
       },
     ],
   ],
   plugins: [
-//    [
-//      require.resolve('@cmfcmf/docusaurus-search-local'),
-//      {
-//      }
-//    ],
     [
-      // TODO: temporary redirect until client is updated to correct url
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [

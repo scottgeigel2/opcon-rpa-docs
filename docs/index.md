@@ -1,24 +1,76 @@
 ---
 slug: '/'
-sidebar_label: 'RPA Introduction'
+sidebar_label: 'OpCon RPA'
+hide_table_of_contents: true
+displayed_sidebar: null
 ---
 
-# Introduction to Robotic Process Automation (RPA)
+# OpCon RPA
 
-OpCon Robotic Process Automation (RPA) continues automation through the **last mile** whether on a desktop, the web, or a hybrid of both. Where OpCon workflows, processes, or tasks pause for human intervention, OpCon RPA addresses manual gaps, enables end-to-end automation, and increases the efficiency of individual employees and the entire business. 
+OpCon Robotic Process Automation (RPA) continues automation through the **last mile** — automating desktop, web, or hybrid processes that pause for human interaction.
 
-OpCon RPA is an OpCon extension with exponential implications. 
+<div style={{display: 'flex', gap: '0.75rem', alignItems: 'flex-start', flexWrap: 'wrap', marginTop: '1rem'}}>
 
+<div style={{flex: '1', minWidth: '160px', display: 'flex', flexDirection: 'column', gap: '0.6rem'}}>
 
-## Getting Started
+<div style={{background: 'var(--ifm-card-background-color)', border: '1px solid var(--ifm-color-emphasis-400)', borderRadius: '10px', padding: '0.75rem 1rem'}}>
 
-**Robotic Process Automation** refers the ability to record a sequence of human interactions (keystrokes and mouse movements and clicks) with a program and play them back on demand.  
+### Overview
 
-**OpCon RPA** is designed for banks, credit unions, and insurance companies for use in tandem with OpCon extending its functionality and usefulness.
+- [Robotic Process Automation](./overview.md)
+- [Release Notes](./release-notes.md)
 
----
+</div>
 
-## Support Information
+<div style={{background: 'var(--ifm-card-background-color)', border: '1px solid var(--ifm-color-emphasis-400)', borderRadius: '10px', padding: '0.75rem 1rem'}}>
 
-**[SMA Support Links and User Community](https://smatechnologies.my.site.com/SMAOpConUserCommunity/s/login/)**  
-**[Full VisualCron User Documentation](https://www.visualcron.com/documentation.aspx)**  
+### OpCon RPA
+
+- [System Requirements](./system-requirements-opcon-rpa.md)
+- [Acquiring a License](./acquiring-a-license-opcon-rpa.md)
+- [Installation](./installation-opcon-rpa.md)
+- [Cloud VPN Install](./install-cloud-vpn.md)
+- [Update](./update-opcon-rpa.md)
+- [Orchestration with OpCon](./orchestration-with-opcon-opcon-rpa.md)
+- [Mapping OpCon Properties](./mapping-opcon-properties.md)
+- [Troubleshooting](./troubleshooting-opcon-rpa.md)
+
+</div>
+
+</div>
+
+<div style={{flex: '1', minWidth: '160px', display: 'flex', flexDirection: 'column', gap: '0.6rem'}}>
+
+<div style={{background: 'var(--ifm-card-background-color)', border: '1px solid var(--ifm-color-emphasis-400)', borderRadius: '10px', padding: '0.75rem 1rem'}}>
+
+### Robot Task
+
+- [Robot Task](./robot-task-rpa.md)
+- [RPA Security Settings](./rpa-security-settings.md)
+
+</div>
+
+</div>
+
+<div style={{flex: '1', minWidth: '160px', display: 'flex', flexDirection: 'column', gap: '0.6rem'}}>
+
+<div style={{background: 'var(--ifm-card-background-color)', border: '1px solid var(--ifm-color-emphasis-400)', borderRadius: '10px', padding: '0.75rem 1rem'}}>
+
+### VisualCron RPA
+
+- [Introduction to VisualCron RPA](./visualcron-rpa.md)
+- [System Requirements](./system-requirements-visualcron-rpa.md)
+- [Acquiring a License](./acquiring-a-license-visualcron-rpa.md)
+- [Installation](./installation-visualcron-rpa.md)
+- [Overview](./overview-visualcron-rpa.md)
+- [Navigation](./navigation-visualcron-rpa.md)
+- [Orchestration with OpCon](./orchestration-with-opcon-visualcron-rpa.md)
+- [Job Configuration](./rpa-job-config-with-visualcron.md)
+- [Reporting and Metrics](./reporting-and-metrics-visualcron-rpa.md)
+- [Troubleshooting](./troubleshooting-visualcron-rpa.md)
+
+</div>
+
+</div>
+
+</div>
