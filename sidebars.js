@@ -13,6 +13,7 @@ module.exports = {
       'update-opcon-rpa',
       'orchestration-with-opcon-opcon-rpa',
       'mapping-opcon-properties',
+      'import-export-tasks-opcon-rpa',
       'troubleshooting-opcon-rpa',
       'changelog-opcon-rpa',
       {
