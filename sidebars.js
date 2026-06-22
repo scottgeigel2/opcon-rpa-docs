@@ -24,6 +24,8 @@ module.exports = {
             'rpa-security-settings',
           ],
         },
+        'copy-task-rpa',
+        'delete-task-rpa',
       ],
     },
     {

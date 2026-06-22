@@ -47,6 +47,8 @@ OpCon Robotic Process Automation (RPA) continues automation through the **last m
 
 - [Robot Task](./robot-task-rpa.md)
 - [RPA Security Settings](./rpa-security-settings.md)
+- [Copy a Task](./copy-task-rpa.md)
+- [Delete a Task](./delete-task-rpa.md)
 
 </div>
 
