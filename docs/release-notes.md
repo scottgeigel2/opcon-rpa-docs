@@ -17,7 +17,7 @@ doc_type: conceptual
 
 ## Summary
 
-Release 1.1.0 lets OpCon RPA run independently of OpCon by moving task storage to a local database, adds Copy and Delete actions for workflows on the Draft and Archive grids, updates the ACS plugin, upgrades VisualCron to 12.3.1, and resolves Tray Client CPU, database-compatibility, and error-reporting issues.
+Release 1.1.0 lets OpCon RPA run independently of OpCon by moving task storage to a local database, adds Copy and Delete actions for workflows on the Draft and Archive grids, updates the ACS plugin, upgrades VisualCron to 12.3.1, and resolves Tray Client CPU, database-compatibility, error-reporting, locked-session, and OpCon task-start issues.
 
 ## OpCon-Independent Operation
 
@@ -67,9 +67,15 @@ The ACS plugin and VisualCron engine are current, and a vulnerable image-process
 
 :white_check_mark: **CON-1209: Script Endpoint Error Message Propagation** The normalized error message is now shown in the UI when the script endpoint returns an error.
 
+:white_check_mark: **CON-1541: Intermittent Task Start Failures from OpCon** Fixed an issue where reconnecting a Windows session left a stale Tray Client registration on the Agent, causing OpCon RPA jobs to fail immediately with an HTTP 400 "RPA Client ... was not found" error.
+
+:white_check_mark: **CON-1677: Run Jobs in a Locked Session** Fixed an issue in some environments where OpCon RPA jobs ran only while the user session was unlocked. The component needed to sign in to a locked session is now included, so jobs run when the session is locked. An active user session on the Agent is still required.
+
+:white_check_mark: **CON-1708: Random Error Dialog While Editing a Task** Fixed an issue where an error dialog could appear while editing a task.
+
 ### Why This Matters
 
-The Tray Client no longer consumes excess CPU when idle or runs as duplicate instances, the Agent protects against data corruption on downgrade, and script endpoint errors surface clearly in the UI.
+The Tray Client no longer consumes excess CPU when idle or runs as duplicate instances, the Agent protects against data corruption on downgrade, script endpoint errors surface clearly in the UI, RPA jobs run when the user session is locked in affected environments, and editing a task no longer raises spurious error dialogs.
 
 ## Winter 26
 
