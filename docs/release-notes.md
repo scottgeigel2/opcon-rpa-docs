@@ -5,6 +5,72 @@ doc_type: conceptual
 
 # OpCon RPA Release Notes
 
+## Summer 26
+
+### 1.2.0
+
+2026 (release date TBD)
+
+# OpCon RPA Release 1.2.0 – What's New
+
+## Summary
+
+Release 1.2.0 fixes recording and playback of browser tab actions in web automation tasks, adds wildcard matching to file and folder filters, removes the third-party sign-in component for locked sessions, resolves designer and Tray Client issues, and updates the Magick.NET, CoreWCF, and SQLite components to secure versions.
+
+## Web Automation
+
+### What's New
+
+:white_check_mark: **CON-880: Browser Tab Handling in Web Recordings** Fixed recording and playback of browser tab actions in web automation tasks. Recording now captures closing a tab, including when a web page closes its own window. Playback now opens a new tab for pages that open in a new window, switches between tabs, and closes tabs as recorded — both in the designer and when the task runs unattended. Recordings created with earlier versions continue to play back correctly.
+
+:white_check_mark: **CON-1694: Browser Password-Save Prompt Disabled** The embedded browser no longer shows a save-password prompt during recording or playback.
+
+### Why This Matters
+
+Web automation tasks that open, switch, or close browser tabs — including pop-up windows — now replay reliably instead of stalling or acting on the wrong tab, and unattended runs are not interrupted by browser prompts.
+
+## Robot Designer & Tasks
+
+### What's New
+
+:white_check_mark: **CON-1878: Wildcard Matching in File and Folder Filters** Wildcard patterns (`*` and `?`) in file and folder filters now match correctly.
+
+:white_check_mark: **CON-1833: Scan Document File Filter Fix** Fixed an error when opening the Scan Document action editor and an issue where its file filter settings were not saved.
+
+:white_check_mark: **CON-1714: Stop Shortcut Fix** Fixed the **Ctrl+Alt+S** stop shortcut not stopping a running task in some Robot designer flows.
+
+:white_check_mark: **CON-1742: Duplicate Credential Entry After Add** Fixed a duplicate placeholder entry appearing in the credentials list after adding a credential.
+
+### Why This Matters
+
+File and folder filters behave as configured, the Scan Document action can be edited and saved without errors, a running task can always be stopped from the keyboard, and the credentials list stays accurate.
+
+## RPA Agent & Tray Client
+
+### What's New
+
+:white_check_mark: **CON-1942: Agent Startup with a Large Task Database** Fixed an issue where the RPA Agent could fail to start when the local task database grew large.
+
+:white_check_mark: **CON-1701: Built-In Locked-Session Sign-In** Running jobs in a locked session no longer relies on a third-party sign-in component. The capability is now built into OpCon RPA.
+
+### Why This Matters
+
+The Agent starts reliably regardless of how much task history has accumulated, and locked-session support no longer depends on an external component.
+
+## Platform & Dependencies
+
+### What's New
+
+:white_check_mark: **CON-1835, CON-1860: Magick.NET Upgrade** Upgraded Magick.NET to 14.14.0 to resolve vulnerable dependencies.
+
+:white_check_mark: **CON-1853: CoreWCF Upgrade** Upgraded CoreWCF to 1.9.1 to resolve a vulnerable dependency.
+
+:white_check_mark: **CON-1836: SQLite Component Update** Updated the SQLite database component to remove a vulnerable dependency.
+
+### Why This Matters
+
+The image-processing, service-communication, and database components are current, keeping OpCon RPA aligned with supported and secure component versions.
+
 ## Spring 26
 
 ### 1.1.0
