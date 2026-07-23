@@ -9,13 +9,43 @@ doc_type: conceptual
 
 ### 1.2.0
 
+**NOTE**: This release changes where some existing tasks run. After the update, Web Macro tasks, Scan Document tasks, and Robot tasks whose execution context is **Background** run on a headless host under the account the RPA Agent service runs as, instead of in the signed-in user's desktop session. See [Background Execution](#background-execution) for who is affected and how to keep the previous behavior.
+
 2026 (release date TBD)
 
 # OpCon RPA Release 1.2.0 – What's New
 
 ## Summary
 
-Release 1.2.0 fixes recording and playback of browser tab actions in web automation tasks, adds wildcard matching to file and folder filters, removes the third-party sign-in component for locked sessions, resolves designer and Tray Client issues, and updates the Magick.NET, CoreWCF, and SQLite components to secure versions.
+Release 1.2.0 moves background-capable tasks — Web Macro, Scan Document, and Robot tasks marked Background — to a new headless host that runs them without a signed-in desktop session, fixes recording and playback of browser tab actions in web automation tasks, adds wildcard matching to file and folder filters, removes the third-party sign-in component for locked sessions, resolves designer and Tray Client issues, and updates the Magick.NET, CoreWCF, and SQLite components to secure versions.
+
+## Background Execution
+
+### What Changes for Existing Tasks
+
+:eight_spoked_asterisk: **CON-1527: Headless Execution for Background-Capable Tasks** After the update, the following tasks run on a headless host under the account the RPA Agent service runs as, even when a user is signed in and the Tray Client is connected:
+
+- All Web Macro tasks
+- All Scan Document tasks
+- Robot tasks whose execution context is **Background**
+
+These tasks no longer run in the signed-in user's desktop session, so they no longer see that user's browser profile, saved sign-ins, proxy settings, or mapped drives. Robot tasks whose execution context is **Foreground** are not affected and continue to run in the interactive session.
+
+To keep the previous behavior for all tasks, set `"RouteBackgroundToHeadless": false` in the RPA Agent's `appsettings.json` and restart the RPA Agent service. The setting applies to the entire Agent — there is no per-task override.
+
+### Requirements
+
+- A task with no execution user runs as the account the RPA Agent service runs as.
+- A task whose execution user differs from the service account is signed in with a batch logon. The service account must hold the **Replace a process level token** (`SeAssignPrimaryTokenPrivilege`) and **Adjust memory quotas for a process** (`SeIncreaseQuotaPrivilege`) privileges for this to succeed.
+- The execution user cannot be LocalSystem or SYSTEM. Such a task fails with the message `Refusing to run headless task as '<user>': LocalSystem/SYSTEM is not allowed as a run identity.`
+
+### Troubleshooting
+
+Headless task logs are written to `%ProgramData%\RPA.HeadlessRunner\logs` on the Agent machine; they do not appear in the Agent's own log. A background-capable task that has no execution user fails immediately with `Background task has no execution user for the interactive path and RouteBackgroundToHeadless is disabled — enable the setting or configure an execution user` when `RouteBackgroundToHeadless` is `false` — turn the setting back on or assign an execution user to the task.
+
+### Why This Matters
+
+Web Macro, Scan Document, and Background Robot tasks run without a signed-in desktop session, and their results no longer depend on which user happens to be signed in. Tasks that relied on the signed-in user's browser profile or network context need the opt-out setting or an explicit execution user.
 
 ## Web Automation
 
