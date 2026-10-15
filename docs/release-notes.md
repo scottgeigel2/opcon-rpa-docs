@@ -10,6 +10,26 @@ tags:
 
 # OpCon RPA Release Notes
 
+## Fall 26
+
+### 1.3.0
+
+**Released:** TBD
+
+#### Summary
+
+Release 1.3.0 makes the RPA Agent start a Robot Task only in the session of the task's own execution user.
+
+#### RPA Agent & Tray Client
+
+##### What's New
+
+- **CON-2631: Robot Tasks Always Start in Their Execution User's Session** When OpCon starts a Robot Task, the RPA Agent now looks only for the RPA Client of the task's execution user. Previously, if that user was not signed in on the host but another user was, the start could be bound to the other user's session. The Agent now refuses the start with `RPA Client for execution user '<user>' was not found`, followed by the client sessions that are connected. To have OpCon sign the execution user in before the task starts, give the task an RDP login user — see [Configure RDP login](./rpa-rdp-login.md#configure-rdp-login).
+
+##### Why This Matters
+
+A Robot Task starts in its execution user's session or not at all. On a host where more than one account is signed in, a task whose execution user was signed out could previously report a successful start against someone else's session. The start now fails immediately, and the message names the user who needs a session.
+
 ## Summer 26
 
 ### 1.2.1
