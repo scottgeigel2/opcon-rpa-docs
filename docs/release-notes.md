@@ -16,19 +16,128 @@ tags:
 
 **Released:** TBD
 
+**NOTE**: This release does not require an ACS Plugin DLL update, but the update is recommended. **Do not downgrade from 1.3.0** — once 1.3.0 has started, an earlier version refuses to open the database and its service will not start. Back up the `DataCache` folder and `appsettings.json` before you update, and update antivirus, application allow-list, and monitoring rules for the renamed program files. See [Upgrade and Compatibility](#upgrade-and-compatibility-130).
+
+
 #### Summary
 
-Release 1.3.0 makes the RPA Agent start a Robot Task only in the session of the task's own execution user.
+Release 1.3.0 lets Robot Tasks that need no desktop run in the background, with nobody signed in, and adds a **Background only** Agent mode that runs the RPA Agent service without administrator rights. Existing Robot Tasks keep running in the foreground until you change them. The release also makes the Web Macro steps that write files report the failures they used to hide; fixes the Get Folders activity and wildcard matching in file masks and folder paths; lists RPA variables in the variable selector; caps the log files and lets you change the log level without a restart; renames the program files that still carried VisualCron names; and applies security updates.
+
+#### Background Execution
+
+##### What's New
+
+- **CON-1527, CON-1769, CON-1770, CON-1771: Robot Tasks Run in the Background** A Robot Task built only from background-safe activities, such as most file, folder, list, variable, and flow-control activities, now runs in a host process the RPA Agent starts as the task's run-as user. No Windows session is used or created, and nobody has to be signed in on the host, including straight after a reboot. Any other activity, or Map mode playback, keeps the task in the foreground, where it runs exactly as before. The run-as user of a background run needs **Log on as a batch job** or **Allow log on locally** on the host. For more information, see [Background and foreground execution](./robot-task-rpa.md#background-and-foreground-execution).
+
+- **CON-1773: See and Control the Execution Mode While You Build** The **Execution Context Setup** window of a Robot Task has a new **Force foreground (always use an interactive session)** option. An indicator above the workflow designer shows which mode the task resolves to and, for the foreground, names the activity that needs the desktop. The new **Background-safe toolbox** option grays out every activity that needs a desktop. For more information, see [Check the execution mode while you build](./robot-task-rpa.md#check-the-execution-mode-while-you-build) and [Force foreground](./robot-task-rpa.md#force-foreground).
+
+- **CON-2553: Existing Robot Tasks Stay in the Foreground** Every Robot Task saved before 1.3.0 counts as having **Force foreground** selected, so it keeps running in the foreground after the update, whatever its activities. To move a task to the background, clear the option and publish the task again. Setting `RouteBackgroundRobotTasks` to `false` in `appsettings.json` keeps every Robot Task on an Agent in the foreground. For more information, see [Tasks saved before 1.3.0](./robot-task-rpa.md#tasks-saved-before-130).
+
+- **CON-2575: No Remote Desktop Sign-In for Background Robot Tasks** With ACS plugin 1.3.0, OpCon starts a Robot Task that will run in the background directly, with no Remote Desktop connection or sign-in, even when the job has an RDP login user. A Remote Desktop problem therefore cannot fail a task that never needed a desktop. An earlier plugin still opens the connection first, and the task still runs. For more information, see [Background Robot Tasks need no session](./rpa-unattended-session.md#background-robot-tasks-need-no-session).
+
+- **CON-2050: Background Task Fails Clearly When Its Run-As User Cannot Log On** When the run-as user of a background task — Web Macro, Scan Document, or Robot — holds neither **Log on as a batch job** nor **Allow log on locally** on the host, the task now ends **Aborted**, and its result text names the account and both rights. Previously the task stayed in Created with no error. For more information, see [A background task ends Aborted because its run-as user cannot log on](./troubleshooting-opcon-rpa.md#a-background-task-ends-aborted-because-its-run-as-user-cannot-log-on).
+
+##### Why This Matters
+
+Robot Tasks that move, read, and write files, or work through list data, no longer need a signed-in Windows session, a Remote Desktop sign-in, or a desktop to unlock and lock. On a host whose Robot Tasks all run in the background, no automation account has to be signed in at all. The change is opt-in per task: every existing task runs as it did until you clear **Force foreground** on it.
+
+#### Background Only Agent Mode
+
+##### What's New
+
+- **CON-2602: Background Only Agent Mode** The installer now asks for an **Agent mode** on a first install. **Full**, the default, runs the RPA Agent service as Local System, as every earlier version did. **Background only** runs the service, and every task, as the virtual account `NT SERVICE\RPA.Agent`, with no administrator rights. A Background only Agent runs Web Macro, Scan Document, and background Robot Tasks, refuses any task that needs a desktop or has a run-as user, and installs no credential provider at the Windows sign-in. For a silent install, pass `AGENTMODE=BackgroundOnly`. An upgrade keeps the installed mode. For more information, see [Background only Agent mode](./rpa-background-only-mode.md) and [Install the RPA Agent](./installation-opcon-rpa.md#step-4--install-the-rpa-agent).
+
+- **CON-2614, CON-2844: The Task Editor on a Background Only Agent** On a Background only Agent, a task needs no Execution Context to be published, and **Force foreground** is unavailable. Saving a task there, including through **Import Settings** or **Copy**, removes its run-as user and clears **Force foreground**; the stored credential is kept. A credential is used for network access only, so its **Local login** and **Load user profile** options are unavailable. For more information, see [How the task editor behaves](./rpa-background-only-mode.md#how-the-task-editor-behaves).
+
+- **CON-2737: A Work Folder for Task Files** A Background only install creates `C:\ProgramData\RPA\Work` and grants the service account **Modify** on it, so tasks have a place to read and write files and standard users can drop input files there. For more information, see [The work folder](./rpa-background-only-mode.md#the-work-folder).
+
+- **CON-2736: The Agent Reports Its Mode** The Agent's `GET /api/status` endpoint returns `agentMode`, with the value `Full` or `BackgroundOnly`, so monitoring tools can tell the two apart. An Agent earlier than 1.3.0 does not return it.
+
+##### Why This Matters
+
+Background only lets a machine run its automation without a user account. The RPA Agent runs as a virtual account with no administrator rights, there is no Local System service and no third-party credential provider at the Windows sign-in, and the files, shares, and sites the tasks use are granted to the Agent rather than to user accounts. It suits a machine whose tasks can all run in the background. Nothing changes on an existing installation: an Agent updated from 1.2.x stays in Full mode. See [What Background only does reduce](./rpa-background-only-mode.md#what-background-only-does-reduce).
 
 #### RPA Agent & Tray Client
 
 ##### What's New
 
-- **CON-2631: Robot Tasks Always Start in Their Execution User's Session** When OpCon starts a Robot Task, the RPA Agent now looks only for the RPA Client of the task's execution user. Previously, if that user was not signed in on the host but another user was, the start could be bound to the other user's session. The Agent now refuses the start with `RPA Client for execution user '<user>' was not found`, followed by the client sessions that are connected. To have OpCon sign the execution user in before the task starts, give the task an RDP login user — see [Configure RDP login](./rpa-rdp-login.md#configure-rdp-login).
+- **CON-2631: Robot Tasks Always Start in Their Execution User's Session** When OpCon starts a Robot Task that runs in the foreground, the RPA Agent now looks only for the RPA Client of the task's execution user. Previously, if that user was not signed in on the host but another user was, the start could be bound to the other user's session. The Agent now refuses the start with `RPA Client for execution user '<user>' was not found`, followed by the client sessions that are connected. To have OpCon sign the execution user in before the task starts, give the task an RDP login user — see [Configure RDP login](./rpa-rdp-login.md#configure-rdp-login). For more information, see [A Robot Task fails because no RPA Client was found for its user](./troubleshooting-opcon-rpa.md#a-robot-task-fails-because-no-rpa-client-was-found-for-its-user).
+
+- **CON-2630: RDP Sign-In for Older Foreground Robot Tasks** Some Robot Tasks saved before 1.3.0, or imported from another Agent, store their execution user in a form the readiness check did not read. For such a task with an RDP login user, OpCon was told the task had no execution user, skipped the Remote Desktop sign-in, and the start then failed with `RPA Client ... was not found` because the user was signed out. The readiness check now reads the execution user the same way the Agent does when it starts the task, so OpCon signs the account in first.
+
+- **CON-2366: Capped Log Files and a Log Level You Can Change Without a Restart** The Agent, Tray Client, and background host logs now start a new file at 50 MB as well as every day, and keep their 14 newest files, so a log folder no longer grows without limit. The **RPA Agent** tab of the Tray Client's **Settings** has a new **Logging** group with a **Minimum Log Level:** list (**Information**, **Debug**, **Verbose**), which the Agent and the Tray Client apply immediately. Every log line written for a task run carries a `(task <task id>/proc <process id>)` prefix, so one run can be followed across the Agent and background host logs, and timestamps include milliseconds. The Tray Client now records at **Information** by default instead of Debug. Saving the Agent settings no longer removes a configured HTTPS certificate thumbprint from `appsettings.json`. For more information, see [Where the logs are](./troubleshooting-opcon-rpa.md#where-the-logs-are) and [Change the log level](./troubleshooting-opcon-rpa.md#change-the-log-level).
+
+- **CON-2361: Declining a New API Token Keeps the Existing One** Selecting **Generate Token** and answering **No** to the **Key Generation Warning** now keeps the existing API token, so OpCon stays connected. Previously the existing token had already been replaced by the time the warning appeared, and the new one was discarded. A token that cannot be generated now shows `No Token Generated.` instead of closing the Tray Client.
+
+- **CON-2758: Credential Options Saved When a Credential Is Added** The **Local login** and **Load user profile** options of a credential are now saved when the credential is first added, including while importing tasks. Previously they were saved only when an existing credential was updated.
+
+- **CON-2316: Tasks Started Without Instance Properties** Fixed a task failing with `Value cannot be null. Parameter name: source` when it was started without job or schedule instance properties.
+
+- **Installer Refuses to Downgrade** The installer now refuses to install over a newer version, with the message `A newer version of RPA Agent <version> is already installed. To install an older version, uninstall the current version first.` An earlier version could not open the newer database anyway. For more information, see [Back Up and Restore the Database](./rpa-backup-restore.md).
 
 ##### Why This Matters
 
-A Robot Task starts in its execution user's session or not at all. On a host where more than one account is signed in, a task whose execution user was signed out could previously report a successful start against someone else's session. The start now fails immediately, and the message names the user who needs a session.
+A foreground Robot Task starts in its execution user's session or not at all, and older tasks that rely on an RDP login user get the sign-in they need. Log folders stay within a known size, and the detail needed to investigate a problem can be turned on and off again without restarting the Agent. Declining a new API token no longer breaks the connection to OpCon.
+
+#### Robot Task Activities and Variables
+
+##### What's New
+
+- **CON-1943, CON-2363: `#` and Character Lists in File Masks and Folder Paths** `#`, `[list]`, and `[!list]` now work in the **Folder**, **Exclude folder(s)**, and **Include file mask** fields of a file filter, in the folder fields of the **Get Folders** folder filter, and in the file name of `{FILE(Exists|<path>)}`. Previously they matched nothing there, so a mask such as `statement-####.pdf` found no files. Semicolon-separated masks and case-insensitive folder masks are also fixed. A `[` now always starts a character list, so the mask `log[1].txt` also matches `log1.txt`. For more information, see [File and folder filters](./rpa-wildcard-matching.md#file-and-folder-filters) and [The FILE(Exists) variable](./rpa-wildcard-matching.md#the-fileexists-variable).
+
+- **CON-2431, CON-2756: Get Folders Can Be Configured Again** The **Folder filter** window of the **Get Folders** activity failed to open, so the activity could not be used. It opens again, and its size fields are checked when you select **OK**, with messages such as `Field 'Smaller than' must be a whole number.` and `Field 'Smaller than' is too large for the selected unit.` A filter set to **OR** with only one size condition selected also let every folder through; it now keeps only the folders that meet that condition. For more information, see [Folder filters](./rpa-wildcard-matching.md#folder-filters) and [Size conditions](./rpa-wildcard-matching.md#size-conditions).
+
+- **CON-2003: RPA Variables in the Variable Selector** In a Robot Task, the **RPA Variables** window has a new **RPA variables** section that lists the variables declared by activities in the workflow, such as the variable an activity saves its result to. Selecting one shows its `{RPA(name)}` expression, ready to copy, so you no longer type it from memory. Variables declared only by disabled activities are not listed. For more information, see [RPA variables in a Robot task](./mapping-opcon-properties.md#rpa-variables-in-a-robot-task).
+
+- **CON-2603: Variable Selector Crash with Names That Differ by Case** Fixed the variable selector failing to open with a Fatal Error when two variables differed only by case, such as `fileWasFound` and `FileWasFound`. Both are now listed.
+
+##### Why This Matters
+
+File and folder patterns accept the same wildcards everywhere, the Get Folders activity can be used, and the variables a workflow produces can be picked from a list instead of typed by hand.
+
+#### Web Automation
+
+##### What's New
+
+- **CON-2336: Print Page Prints** The Web Macro **Print page** step, and the Robot **Print Page** activity, silently printed nothing. They now print. A printer that saves to a file, such as Microsoft Print to PDF or Microsoft XPS Document Writer, needs the new output file setting. The step waits until the file is complete, and fails with a clear reason when the printer is missing, the job fails, or the file cannot be written. For more information, see [Print page](./web-macro-task.md#print-page).
+
+- **CON-2662: A Credential on the Print Page Step** The **Print page** step has a **Credential:** field, like **Take screenshot** and **Download file**, so it can write its output file to a network share, including in a background run. **Save as PDF** now fails the step when its credential cannot be used.
+
+- **CON-2775: Take Screenshot Fails When the File Is Not Saved** **Take screenshot** reported success even when its file could not be saved, for example because the account had no access to the folder. It now fails the step with `Could not save screenshot to '<path>': <reason>`, and the task output records whether the file was saved or skipped. For more information, see [Take screenshot](./web-macro-task.md#take-screenshot).
+
+- **CON-2782: File Steps Fail When Their Credential Cannot Be Used** When the credential on a **Download file**, **Upload file**, or **Extract table** step cannot be used, for example because its password changed, the step now fails with `Could not impersonate credential with id '<id>' for '<path>': <reason>`. Previously it carried on as the account the task runs as. The **Show filtered files** preview on a file filter's **Test** tab reports the same error. For more information, see [Credentials on file steps](./web-macro-task.md#credentials-on-file-steps).
+
+- **CON-2377: Robot Recording with "Use web browser" Works Again** Recording a Robot Task with **Use web browser**, and the activities in the **Web Browser** section of the toolbox, could fail because the browser they open was built for an earlier version of the browser engine and could not load the one OpCon RPA ships. The browser, now `RPA.WebBrowser.exe`, is built for the shipped engine, and both work again.
+
+##### Why This Matters
+
+A Web Macro that reports success has produced the files it was asked to write. Failures that earlier versions hid — a print that never happened, a screenshot that was never saved, a step that wrote as the wrong account — now fail the step and name the file, so a scheduled job that depends on the output finds out at the step that went wrong.
+
+#### Upgrade and Compatibility {#upgrade-and-compatibility-130}
+
+Read these before you update. They are covered in full in [Update - OpCon RPA Agent and ACS plugin](./update-opcon-rpa.md#130).
+
+- **CON-2305, CON-2377, CON-2383: Program Files Renamed** `VisualCronWebMacro.exe` is now `RPA.WebMacro.exe`, `VisualCron.WebBrowser.exe` is now `RPA.WebBrowser.exe`, and the program libraries carry `RPA.` names, such as `RPA.VisualCron.dll`. Update antivirus exclusions, application allow-lists, monitoring rules, and firewall rules that name the old files before you update the Agent; a rule that blocks unknown programs can stop Web Macro tasks from starting. Tasks saved in earlier versions still open and run.
+
+- **CON-2553: Robot Tasks Saved Before 1.3.0 Stay in the Foreground** Nothing moves to the background on its own. See [Tasks saved before 1.3.0](./robot-task-rpa.md#tasks-saved-before-130).
+
+- **Agent mode is kept** An Agent updated from 1.2.x stays in Full mode, and the update shows no mode choice. See [Switch modes](./rpa-background-only-mode.md#switch-modes).
+
+- **Do not downgrade** Once 1.3.0 has started, an earlier version refuses to open the database. A backup of `DataCache` taken before the update is the only route back. See [Back Up and Restore the Database](./rpa-backup-restore.md).
+
+- **Review masks and folder paths that contain `#` or `[`** They are now matched as wildcards, so a pattern can match more than before. See [Wildcard Matching](./rpa-wildcard-matching.md).
+
+- **Web Macro steps that write files can now fail** A **Print page** step that uses Microsoft Print to PDF or Microsoft XPS Document Writer fails until you give it an output file. A task that reported success before may now report a failure that was always there. See [Steps that write files](./web-macro-task.md#steps-that-write-files).
+
+- **The installer shows a setup wizard** Earlier installers had no pages. An update shows a welcome page and a ready-to-install page. A silent installation with `msiexec` runs as before.
+
+#### Security
+
+- **CON-2543: ImageMagick Security Updates** Magick.NET, the library behind the image activities, is updated to 14.17.2, which resolves 41 ImageMagick security advisories, including memory leaks, use-after-free errors, heap buffer over-reads and over-writes, and a policy bypass, in the coders for formats such as TIFF, PSD, and DCM. Image activities are otherwise unchanged.
+
+##### Why This Matters
+
+Third-party components are current, keeping OpCon RPA aligned with supported and secure component versions.
 
 ## Summer 26
 
